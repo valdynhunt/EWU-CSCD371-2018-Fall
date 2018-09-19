@@ -7,4 +7,4 @@ Tools that will be needed for this course
     - GitLens (eamodio.gitlens)
     - MSBuild project tools (tintoy.msbuild-project-tools)
     - VS Live Share (ms-vsliveshare.vsliveshare)
-- dotnet core (version 2.1.4) - https://www.microsoft.com/net/download/dotnet-core/2.1
+- dotnet core (version 2.0.9) - https://www.microsoft.com/net/download/dotnet-core/2.0
