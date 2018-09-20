@@ -31,4 +31,4 @@
 | Outstanding | 20pt | Unit test(s) all prescribed operation(s), tests edge and error cases, code is well structured, and does not contain functional issues. |
 | Satisfactory | 15pt | Unit test(s) properly test all prescribed operation(s) of app |
 | Below Satisfactory | 5pt | Unit test(s) do not properly test prescribed operation(s) of app |
-| Not Satisfactory | 0pt, Unit test(s) not present, or do not run with "dotnet test" |
+| Not Satisfactory | 0pt | Unit test(s) not present, or do not run with "dotnet test" |
