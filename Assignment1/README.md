@@ -1,7 +1,7 @@
 # Assignment 1 - Due 2018-09-27
 * Setup your computer for development (see [Develoment Tools](./wiki/Development-Tools)).
 * Forks the [EWU-CSCD371-2018-Fall](../../../) repository.
-* Write an **automated** unit test for a console application described below.
+* Write an **automated** unit test for a console application described below.  Note, we will demonstrate how to do this during class on Tuesday.
 * Write a console application that
     * Prompts the user for input
     * Write the users input out to the console
