@@ -1,13 +1,9 @@
-Tools that will be needed for this course
-- git - https://git-scm.com/
-- VSCode (or other editor of choice) - https://code.visualstudio.com/
-  - helpful plugins
-    - C# (ms-vscode.csharp)
-    - GitHub Pull Requests (github.vscode-pull-request-github)
-    - GitLens (eamodio.gitlens)
-    - MSBuild project tools (tintoy.msbuild-project-tools)
-    - VS Live Share (ms-vsliveshare.vsliveshare)
-- dotnet core (version 2.0.9) - https://www.microsoft.com/net/download/dotnet-core/2.0
-
-Fork the repository to your local git account
-- create a .gitignore file for either Visual Studio or VS Code (this will ignore Microsoft elements from ever going into source code).
+# Assignment 1 - Due 2018-09-27
+* Setup your computer for development (see [Develoment Tools](./wiki/Development-Tools).
+* Forks the [EWU-CSCD371-2018-Fall](./EWU-CSCD371-2018-Fall) repository.
+* Write an **automated** unit test for a console application described below.
+* Write a console application that
+    * Prompts the user for input
+    * Write the users input out to the screen
+* Add a .gitignore file to your C# project (consider Visual Studio and/or VS Code .gitignore files)
+* Submit a pull request (PR) back to the <a href=./EWU-CSCD371-2018-Fall>forked (EWU-CSCD371-2018-Fall])</a> repo.
