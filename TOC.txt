@@ -1,0 +1,159 @@
+1 Introducing C#
+Git (GitHub)
+Code Editors
+  VSCode
+  Visual Studio IDE
+Hello, World
+C# Syntax Fundamentals
+Unit Testing
+Unit Testing Console Applications
+Working with Variables 20
+Console Input and Output 24
+Managed Execution and the Common Language Infrastructure 32
+Multiple .NET Frameworks 37
+2 Data Types 4
+Fundamental Numeric Types 44
+More Fundamental Types 53
+null and void 67
+Conversions between Data Types 69
+3 More with Data Types 77
+Categories of Types 77
+Nullable Modifier 80
+Tuples 83
+Arrays 90
+4 Operators and Control Flow 109
+Operators 110
+Introducing Flow Control 126
+Code Blocks ({}) 132
+Code Blocks, Scopes, and Declaration Spaces 135
+Boolean Expressions 137
+Bitwise Operators (<<, >>, |, &, ^, ~) 147
+Control Flow Statements, Continued 153
+Jump Statements 165
+C# Preprocessor Directives 171
+5 Methods and Parameters 181
+Calling a Method 182
+Declaring a Method 189
+The using Directive 195
+Returns and Parameters on Main() 200
+Advanced Method Parameters 203
+Recursion 215
+Method Overloading 217
+Optional Parameters 220
+Basic Error Handling with Exceptions 225
+6 Classes 241
+Declaring and Instantiating a Class 245
+Instance Fields 249
+Instance Methods 251
+Using the this Keyword 252
+Access Modifiers 259
+Properties 261
+Constructors 278
+Static Members 289
+Extension Methods 299
+Encapsulating the Data 301
+Nested Classes 304
+Partial Classes 307
+7 Inheritance 313
+Derivation 314
+Overriding the Base Class 326
+Abstract Classes 338
+All Classes Derive from System.Object 344
+Verifying the Underlying Type with the is Operator 345
+Pattern Matching with the is Operator 346
+Pattern Matching within a switch Statement 347
+Conversion Using the as Operator 349
+8 Interfaces 353
+Introducing Interfaces 354
+Polymorphism through Interfaces 355
+Interface Implementation 360
+Converting between the Implementing Class and Its Interfaces 366
+Interface Inheritance 366
+Multiple Interface Inheritance 369
+Extension Methods on Interfaces 369
+Implementing Multiple Inheritance via Interfaces 371
+Versioning 374
+Interfaces Compared with Classes 375
+Interfaces Compared with Attributes 377
+9 Value Types 379
+Structs 383
+Boxing 390
+Enums 398
+10 Well-Formed Types 411
+Overriding object Members 411
+Operator Overloading 424
+Referencing Other Assemblies 432
+Defining Namespaces 442
+XML Comments 445
+Garbage Collection 449
+Resource Cleanup 452
+Lazy Initialization 461
+11 Exception Handling 465
+Multiple Exception Types 465
+Catching Exceptions 469
+General Catch Block 473
+Guidelines for Exception Handling 475
+Defining Custom Exceptions 479
+Rethrowing a Wrapped Exception 483
+12 Generics 487
+C# without Generics 488
+Introducing Generic Types 493
+Constraints 506
+Generic Methods 519
+Covariance and Contravariance 524
+Generic Internals 531
+13 Delegates and Lambda Expressions 537
+Introducing Delegates 538
+Declaring Delegate Types 542
+Lambda Expressions 550
+Anonymous Methods 556
+14 Events 575
+Coding the Publish-Subscribe Pattern with Multicast Delegates 576
+Understanding Events 591
+15 Collection Interfaces with Standard Query Operators 603
+Collection Initializers 604
+What Makes a Class a Collection: IEnumerable<T> 607
+Standard Query Operators 613
+Anonymous Types with LINQ 646
+16 LINQ with Query Expressions 657
+Introducing Query Expressions 658
+Query Expressions Are Just Method Invocations 676
+17 Building Custom Collections 679
+More Collection Interfaces 680
+Primary Collection Classes 683
+Providing an Indexer 702
+Returning Null or an Empty Collection 705
+Iterators 705
+18 Reflection, Attributes, and Dynamic Programming 721
+Reflection 722
+nameof Operator 733
+Attributes 735
+Programming with Dynamic Objects 759
+19 Multithreading 771
+Multithreading Basics 774
+Working with System.Threading 781
+Asynchronous Tasks 789
+Canceling a Task 810
+The Task-based Asynchronous Pattern 816
+Executing Loop Iterations in Parallel 846
+Running LINQ Queries in Parallel 856
+20 Thread Synchronization 863
+Why Synchronization? 864
+Timers 893
+21 Platform Interoperability and Unsafe Code 897
+Platform Invoke 898
+Pointers and Addresses 910
+Executing Unsafe Code via a Delegate 920
+22 The Common Language Infrastructure 923
+Defining the Common Language Infrastructure 924
+CLI Implementations 925
+.NET Standard 928
+Base Class Library 929
+C# Compilation to Machine Code 929
+Runtime 932
+Assemblies, Manifests, and Modules 936
+Common Intermediate Language 939
+Common Type System 939
+Common Language Specification 940
+Metadata 941
+.NET Native and Ahead of Time Compilation 942
