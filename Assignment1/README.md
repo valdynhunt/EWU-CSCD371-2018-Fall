@@ -1,5 +1,5 @@
 # Assignment 1 - Due 2018-09-27
-* Fill out the [GitHub](https://goo.gl/forms/z615HUoYKAYbgc8f1) Google Form so that we have your GitHub Username associated with your name.
+* Fill out the [GitHub Google Form](https://goo.gl/forms/z615HUoYKAYbgc8f1)  so that we have your GitHub Username associated with your name.
 * Setup your computer for development (see [Develoment Tools](./wiki/Development-Tools)).
 * Fork the [EWU-CSCD371-2018-Fall](../../../) repository.
 * Write an **automated** unit test for a console application described below.  Note, we will demonstrate how to do this during class on Tuesday.
