@@ -6,8 +6,17 @@ namespace HelloConsole.Tests
     public class ConsoleGreetingTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestInitialGreeting()
         {
+            string expectedOutput = @">>Hello from your friendly neighborhood console!
+>>What is your first name?
+<<Alfred
+>>Thanks Alfred! What is your last name?
+<<Newman
+>>Excellent! Greetings to you, Sir Alfred Newman!
+>>I hope this day finds you well and productive.";
+
+            IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, HelloConsole.Greeting.Main);
         }
     }
 }
