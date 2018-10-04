@@ -6,13 +6,55 @@ namespace MathExpressions
     public class MathExpressions
     {
         private string expr;
+        private string tempExpr;
         private char op;
         private string[] parts;
         private bool isSubtraction;
+        private double result;
+        private bool negNumAtBeginning;
 
         public MathExpressions()
         {
 
+        }
+
+        public void CalcLoop()
+        {
+            int numMinuses;
+            PrintIntro();
+            GetInput();
+            if (op == '-')
+            {
+                numMinuses = SubtractionAlsoHasNegNumbers();
+                if (numMinuses > 1)
+                {
+                    if (negNumAtBeginning && numMinuses == 2) // negative first operand
+                    {
+                        tempExpr = expr.Substring(1);
+                        parts = this.tempExpr.Split(this.op);
+
+                        for (int i = 0; i < parts.Length; i++)
+                        {
+                            if (i == 0) parts[i] = "-" + parts[i];
+                            Console.Write("part" + i);
+                            Console.WriteLine(parts[i]);
+                        }
+
+                    }
+                    else // both operands are negative
+                    {
+
+
+
+                    }
+                }
+            }
+            else
+            {
+                SplitString();
+                ValidateOperands();
+                EvaluateExpression();
+            }
         }
 
         public string GetExpression()
@@ -37,10 +79,6 @@ namespace MathExpressions
 
         public void SplitString()
         {
-            if (op.Equals("-"))
-            {
-
-            }
             parts = this.expr.Split(this.op);
 
             for (int i = 0; i < parts.Length; i++)
@@ -53,15 +91,15 @@ namespace MathExpressions
         public bool ValidateOperands()
         {
             foreach (string operand in parts) {
-                if (int.TryParse(operand, out int result))
+                if (int.TryParse(operand, out int res))
                 {
-                    Console.WriteLine(result.ToString());
+                    Console.WriteLine(res.ToString());
                 }
                 else
                 {
                     Console.WriteLine("Your input expression was not valid....");
                 }
-                Console.WriteLine("result is: " + result);
+                Console.WriteLine("result is: " + res);
             }
 
 
@@ -73,19 +111,14 @@ namespace MathExpressions
 
         public void EvaluateExpression()
         {
+            if (op == '+') result = int.Parse(parts[0]) + int.Parse(parts[1]);
 
+
+            Console.WriteLine("result: " + result);
         }
 
 
-        public static void Main(string[] args)
-        {
-            MathExpressions me = new MathExpressions();
-            PrintIntro();
-            me.GetInput();
-            me.SplitString();
-            me.ValidateOperands();
 
-        }
 
 
         private bool ValidateExpr()
@@ -106,19 +139,34 @@ namespace MathExpressions
             return good;
         }
 
-        private static int SubtractionAlsoHasNegNumbers()
+        private int SubtractionAlsoHasNegNumbers()
         {
-            int num = 0;
-            // get count of minus
-            return num;
+            int index = 0;
+            int count = 0;
+            int exprLength = expr.Length;
+            // get count of how many minus
+            if (expr[0] == '-')
+            {
+                negNumAtBeginning = true;
+                count++;
+            }
+
+            tempExpr = "";
+            for (int i = 1; i < expr.Length; i++)
+            {
+                tempExpr = expr.Substring(i);
+                if (tempExpr[0] == '-') count++;
+            }
+
+            return count;
         }
 
         private static char FindOperator(string expr)
         {
             if (expr.Contains('+')) return '+';
-            else if (expr.Contains('-')) return '-';
             else if (expr.Contains('*')) return '*';
             else if (expr.Contains('/')) return '/';
+            else if (expr.Contains('-')) return '-';
             else return '\0';
         }
 
@@ -127,6 +175,13 @@ namespace MathExpressions
             Console.WriteLine("Hello from the Math Expression Console!");
             Console.WriteLine("Please enter a math expression of the form <int><operator><int>.");
             Console.WriteLine("The operator can be +, -, *, or /, and the int can be negative.");
+        }
+
+        public static void Main(string[] args)
+        {
+            MathExpressions me = new MathExpressions();
+            me.CalcLoop();
+
         }
     }
 }
