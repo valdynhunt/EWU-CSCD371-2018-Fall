@@ -12,6 +12,8 @@ namespace MathExpressions
         private bool isSubtraction;
         private double result;
         private bool negNumAtBeginning;
+        private string firstOperand;
+        private string lastOperand;
 
         public MathExpressions()
         {
@@ -23,6 +25,7 @@ namespace MathExpressions
             int numMinuses;
             PrintIntro();
             GetInput();
+
             if (op == '-')
             {
                 numMinuses = SubtractionAlsoHasNegNumbers();
@@ -35,18 +38,34 @@ namespace MathExpressions
 
                         for (int i = 0; i < parts.Length; i++)
                         {
-                            if (i == 0) parts[i] = "-" + parts[i];
+                            if (i == 0)
+                            {
+                                firstOperand = "-" + parts[i];
+                                parts[i] = firstOperand;
+                            }
+                            if (i == 1) lastOperand = parts[i];
                             Console.Write("part" + i);
                             Console.WriteLine(parts[i]);
                         }
 
                     }
-                    else // both operands are negative
-                    {
-
-
+                    else if (numMinuses == 2) {
+                        int index = expr.IndexOf(op);
+                        firstOperand = expr.Substring(0, index - 1);
+                        lastOperand = expr.Substring(index + 1);
 
                     }
+                    else // both operands are negative
+                    {
+                        tempExpr = expr.Substring(1);
+                        int nextMinus = tempExpr.IndexOf(op);
+                        firstOperand = expr.Substring(0, nextMinus);
+                        lastOperand = expr.Substring(nextMinus + 1);
+                    }
+
+                    if (numMinuses == 1) SplitString();
+                    ValidateOperands();
+                    EvaluateExpression();
                 }
             }
             else
@@ -112,7 +131,9 @@ namespace MathExpressions
         public void EvaluateExpression()
         {
             if (op == '+') result = int.Parse(parts[0]) + int.Parse(parts[1]);
-
+            else if (op == '*') result = int.Parse(parts[0]) * int.Parse(parts[1]);
+            else if (op == '/') result = int.Parse(parts[0]) / (double) int.Parse(parts[1]);
+            else if (op == '-') result = int.Parse(parts[0]) - int.Parse(parts[1]);
 
             Console.WriteLine("result: " + result);
         }
