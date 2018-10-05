@@ -140,14 +140,53 @@ namespace MathExpressions
             return false;
         }
 
+        public bool ValidateFirstOperandInRange(string firstOperand)
+        {
+            int max = Int32.MaxValue;
+            int min = Int32.MinValue;
+            if (int.Parse(firstOperand) > max) return false;
+            if (int.Parse(firstOperand) < min) return false;
+            return true;
+        }
+
+        public bool ValidateLastOperandInRange(string lastOperand)
+        {
+            return ValidateFirstOperandInRange(lastOperand);
+        }
+
+
+        public bool checkDivideByZero(string lastOperand)
+        {
+            if (lastOperand == "0") return true;
+            else return false;
+        }
+
         public void EvaluateExpression()
         {
+            firstOperand = parts[0];
+            lastOperand = parts[1];
+            bool divZero = true;
+
+            bool firstInRange = ValidateFirstOperandInRange(firstOperand);
+            bool lastInRange = ValidateLastOperandInRange(lastOperand);
+
             if (op == '+') result = int.Parse(parts[0]) + int.Parse(parts[1]);
             else if (op == '*') result = int.Parse(parts[0]) * int.Parse(parts[1]);
-            else if (op == '/') result = int.Parse(parts[0]) / (double) int.Parse(parts[1]);
+            else if (op == '/')
+            {
+                divZero = checkDivideByZero(lastOperand);
+                if (!divZero) result = int.Parse(parts[0]) / (double)int.Parse(parts[1]);
+            }
             else if (op == '-') result = int.Parse(parts[0]) - int.Parse(parts[1]);
 
-            Console.WriteLine("result: " + result);
+            if (divZero)
+            {
+                Console.WriteLine("Cannot divide by zero.");
+            }
+            else
+            {
+                Console.WriteLine("result: " + result);
+            }
         }
 
 

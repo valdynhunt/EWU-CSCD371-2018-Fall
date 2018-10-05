@@ -83,9 +83,58 @@ namespace MathExpressions.Tests
 
         //=========================
 
+        public bool ValidateFirstOperandInRange(string firstOperand)
+        {
+            int max = Int32.MaxValue;
+            int min = Int32.MinValue;
+            if (int.Parse(firstOperand) > max) return false;
+            if (int.Parse(firstOperand) < min) return false;
+            return true;
+        }
+
+        public bool ValidateLastOperandInRange(string lastOperand)
+        {
+            return ValidateFirstOperandInRange(lastOperand);
+        }
+
+
+        public bool checkDivideByZero(string lastOperand)
+        {
+            if (lastOperand == "0") return true;
+            else return false;
+        }
 
 
 
+
+        [TestMethod]
+        public void First_operand_in_range_returns_true()
+        {
+            MathExpressions me = new MathExpressions();
+            string firstOperand = "23546";
+            bool expectedOutput = true;
+            Assert.AreEqual(expectedOutput, me.ValidateFirstOperandInRange(firstOperand));
+        }
+
+
+        [TestMethod]
+        public void Last_operand_in_range_returns_true()
+        {
+            MathExpressions me = new MathExpressions();
+            string lastOperand = "6";
+            bool expectedOutput = true;
+            Assert.AreEqual(expectedOutput, me.ValidateFirstOperandInRange(lastOperand));
+        }
+
+
+        [TestMethod]
+        public void Check_divide_by_zero_returns_false_when_lastOperand_is_0()
+        {
+            MathExpressions me = new MathExpressions();
+            string lastOperand = "0";
+            bool expectedOutput = true;
+            Assert.AreEqual(expectedOutput, me.checkDivideByZero(lastOperand));
+        }
 
 
         //        [TestMethod]
@@ -99,42 +148,6 @@ namespace MathExpressions.Tests
         //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
         //                expectedOutput, MathExpressions.PrintIntro);
         //        }
-
-
-        //        [TestMethod]
-        //        public void TestPrintIntro()
-        //        {
-
-        //            string expectedOutput = $@">>Hello from the Math Expression Console!
-        //>>Please enter a math expression of the form <int><operator><int>.
-        //>>The operator can be +, -, *, or /, and the int can be negative.";
-
-        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-        //                expectedOutput, MathExpressions.PrintIntro);
-        //        }
-
-
-        //        [TestMethod]
-        //        public void TestPrintIntro()
-        //        {
-
-        //            string expectedOutput = $@">>Hello from the Math Expression Console!
-        //>>Please enter a math expression of the form <int><operator><int>.
-        //>>The operator can be +, -, *, or /, and the int can be negative.";
-
-        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-        //                expectedOutput, MathExpressions.PrintIntro);
-        //        }
-
-
-
-
-
-
-
-
-
-
 
     }
 }
