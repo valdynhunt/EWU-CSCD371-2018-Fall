@@ -40,56 +40,91 @@ namespace MathExpressions.Tests
         }
 
 
-//        [TestMethod]
-//        public void TestPrintIntro()
-//        {
+        [TestMethod]
+        public void ValidateExpr_returns_true_if_expression_is_valid()
+        {
+            MathExpressions me = new MathExpressions();
+            string ex = "2*5";
+            me.SetExpression(ex);
+            bool expectedOutput = true;
+            Assert.AreEqual(expectedOutput, me.ValidateExpr(me.GetExpression()));
+        }
 
-//            string expectedOutput = $@">>Hello from the Math Expression Console!
-//>>Please enter a math expression of the form <int><operator><int>.
-//>>The operator can be +, -, *, or /, and the int can be negative.";
+        //=========================
 
-//            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-//                expectedOutput, MathExpressions.PrintIntro);
-//        }
-
-
-//        [TestMethod]
-//        public void TestPrintIntro()
-//        {
-
-//            string expectedOutput = $@">>Hello from the Math Expression Console!
-//>>Please enter a math expression of the form <int><operator><int>.
-//>>The operator can be +, -, *, or /, and the int can be negative.";
-
-//            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-//                expectedOutput, MathExpressions.PrintIntro);
-//        }
+        //[TestMethod]
+        //public void ValidateExpr_returns_false_if_expression_is_invalid()
+        //{
+        //    MathExpressions me = new MathExpressions();
+        //    string ex = "2^5";
+        //    me.SetExpression(ex);
+        //    string expectedOutput = "Your entry is invalid, please try again...";
+        //    Assert.AreEqual(expectedOutput, me.ValidateExpr(me.GetExpression()));
+        //}
 
 
-//        [TestMethod]
-//        public void TestPrintIntro()
-//        {
+        //private bool ValidateExpr()
+        //{
+        //    bool good = false;
+        //    Console.WriteLine("You entered {0}", this.expr);
+        //    this.op = FindOperator(this.expr);
+        //    if (this.op == '\0')
+        //    {
+        //        Console.WriteLine("Your entry is invalid, please try again...");
+        //        this.expr = Console.ReadLine();
+        //    }
+        //    else
+        //    {
+        //        good = true;
+        //    }
 
-//            string expectedOutput = $@">>Hello from the Math Expression Console!
-//>>Please enter a math expression of the form <int><operator><int>.
-//>>The operator can be +, -, *, or /, and the int can be negative.";
+        //    return good;
+        //}
 
-//            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-//                expectedOutput, MathExpressions.PrintIntro);
-//        }
+        //=========================
 
 
-//        [TestMethod]
-//        public void TestPrintIntro()
-//        {
 
-//            string expectedOutput = $@">>Hello from the Math Expression Console!
-//>>Please enter a math expression of the form <int><operator><int>.
-//>>The operator can be +, -, *, or /, and the int can be negative.";
 
-//            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-//                expectedOutput, MathExpressions.PrintIntro);
-//        }
+
+
+        //        [TestMethod]
+        //        public void TestPrintIntro()
+        //        {
+
+        //            string expectedOutput = $@">>Hello from the Math Expression Console!
+        //>>Please enter a math expression of the form <int><operator><int>.
+        //>>The operator can be +, -, *, or /, and the int can be negative.";
+
+        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
+        //                expectedOutput, MathExpressions.PrintIntro);
+        //        }
+
+
+        //        [TestMethod]
+        //        public void TestPrintIntro()
+        //        {
+
+        //            string expectedOutput = $@">>Hello from the Math Expression Console!
+        //>>Please enter a math expression of the form <int><operator><int>.
+        //>>The operator can be +, -, *, or /, and the int can be negative.";
+
+        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
+        //                expectedOutput, MathExpressions.PrintIntro);
+        //        }
+
+
+        //        [TestMethod]
+        //        public void TestPrintIntro()
+        //        {
+
+        //            string expectedOutput = $@">>Hello from the Math Expression Console!
+        //>>Please enter a math expression of the form <int><operator><int>.
+        //>>The operator can be +, -, *, or /, and the int can be negative.";
+
+        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
+        //                expectedOutput, MathExpressions.PrintIntro);
+        //        }
 
 
 

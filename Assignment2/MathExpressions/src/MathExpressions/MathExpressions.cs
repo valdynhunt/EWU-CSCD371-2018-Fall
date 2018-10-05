@@ -87,18 +87,24 @@ namespace MathExpressions
             return this.expr;
         }
 
+
+        public void SetExpression(string ex)
+        {
+            this.expr = ex;
+        }
+
         public void GetInput()
         {
 
             this.expr = Console.ReadLine();
             this.op = FindOperator(expr);
-            bool good = ValidateExpr();
+            bool good = ValidateExpr(expr);
 
             while (!good)
             {
                 this.expr = Console.ReadLine();
                 this.op = FindOperator(expr);
-                good = ValidateExpr();
+                good = ValidateExpr(expr);
             }
         }
 
@@ -148,7 +154,7 @@ namespace MathExpressions
 
 
 
-        private bool ValidateExpr()
+        public bool ValidateExpr(string expr)
         {
             bool good = false;
             Console.WriteLine("You entered {0}", this.expr);
