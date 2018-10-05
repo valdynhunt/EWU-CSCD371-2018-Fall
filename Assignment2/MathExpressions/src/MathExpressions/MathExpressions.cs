@@ -25,7 +25,7 @@ namespace MathExpressions
             int numMinuses;
             PrintIntro();
             GetInput();
-
+            Console.WriteLine("1");
             if (op == '-')
             {
                 numMinuses = SubtractionAlsoHasNegNumbers();
@@ -65,7 +65,11 @@ namespace MathExpressions
 
                     if (numMinuses == 1) SplitString();
                     ValidateOperands();
-                    EvaluateExpression();
+                    result = int.Parse(parts[0]) - int.Parse(parts[1]);
+                    Console.WriteLine("2");
+
+                    Console.WriteLine("result: " + result);
+                    // EvaluateExpression();
                 }
             }
             else
@@ -73,6 +77,8 @@ namespace MathExpressions
                 SplitString();
                 ValidateOperands();
                 EvaluateExpression();
+                Console.WriteLine("3");
+
             }
         }
 
@@ -182,7 +188,7 @@ namespace MathExpressions
             return count;
         }
 
-        private static char FindOperator(string expr)
+        public static char FindOperator(string expr)
         {
             if (expr.Contains('+')) return '+';
             else if (expr.Contains('*')) return '*';
