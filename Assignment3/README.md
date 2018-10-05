@@ -1,6 +1,6 @@
 # Assignment 3
 
-* For this assigment we are going to make a simple game of roshambo (rock, paper, scissors). Of course there is going to be a twist since usually the first comment out of the losing player's mouth is "best 2 out of 3?". This means the twist will be, instead of trying to appease the "best 2 out of 3/best 3 out of 5" argument, each player will start with a life of 100 points and as they lose a round, their points will be deducted.
+### For this assigment we are going to make a simple game of roshambo (rock, paper, scissors). Of course there is going to be a twist since usually the first comment out of the losing player's mouth is "best 2 out of 3?". This means the twist will be, instead of trying to appease the "best 2 out of 3/best 3 out of 5" argument, each player will start with a life of 100 points and as they lose a round, their points will be deducted.
 
 #### Game Requirements
 * Assume that when the person launches the application, they want to play the game, so don't prompt them on if they want to play or not
