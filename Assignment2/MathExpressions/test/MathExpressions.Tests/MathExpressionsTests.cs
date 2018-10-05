@@ -20,7 +20,7 @@ namespace MathExpressions.Tests
 
 
         [TestMethod]
-        public void TestFindOperator()
+        public void FindOperator_returns_operator()
         {
             string expr = "3+4";
             char expectedOutput = '+';
@@ -83,38 +83,16 @@ namespace MathExpressions.Tests
 
         //=========================
 
-        public bool ValidateFirstOperandInRange(string firstOperand)
-        {
-            int max = Int32.MaxValue;
-            int min = Int32.MinValue;
-            if (int.Parse(firstOperand) > max) return false;
-            if (int.Parse(firstOperand) < min) return false;
-            return true;
-        }
 
-        public bool ValidateLastOperandInRange(string lastOperand)
-        {
-            return ValidateFirstOperandInRange(lastOperand);
-        }
-
-
-        public bool checkDivideByZero(string lastOperand)
-        {
-            if (lastOperand == "0") return true;
-            else return false;
-        }
-
-
-
-
-        [TestMethod]
-        public void First_operand_in_range_returns_true()
-        {
-            MathExpressions me = new MathExpressions();
-            string firstOperand = "23546";
-            bool expectedOutput = true;
-            Assert.AreEqual(expectedOutput, me.ValidateFirstOperandInRange(firstOperand));
-        }
+        //[TestMethod]
+        //public void First_operand_above_maxRange_returns_false()
+        //{
+        //    MathExpressions me = new MathExpressions();
+        //    int max = Int32.MaxValue;
+        //    string firstOperand = max.ToString;
+        //    bool expectedOutput = true;
+        //    Assert.AreEqual(expectedOutput, me.ValidateFirstOperandInRange(firstOperand));
+        //}
 
 
         [TestMethod]
@@ -128,11 +106,31 @@ namespace MathExpressions.Tests
 
 
         [TestMethod]
-        public void Check_divide_by_zero_returns_false_when_lastOperand_is_0()
+        public void First_operand_in_range_returns_true()
+        {
+            MathExpressions me = new MathExpressions();
+            string firstOperand = "23546";
+            bool expectedOutput = true;
+            Assert.AreEqual(expectedOutput, me.ValidateFirstOperandInRange(firstOperand));
+        }
+
+
+        [TestMethod]
+        public void Check_divide_by_zero_returns_true_when_lastOperand_is_0()
         {
             MathExpressions me = new MathExpressions();
             string lastOperand = "0";
             bool expectedOutput = true;
+            Assert.AreEqual(expectedOutput, me.checkDivideByZero(lastOperand));
+        }
+
+
+        [TestMethod]
+        public void Check_divide_by_zero_returns_false_when_lastOperand_is_not_0()
+        {
+            MathExpressions me = new MathExpressions();
+            string lastOperand = "7";
+            bool expectedOutput = false;
             Assert.AreEqual(expectedOutput, me.checkDivideByZero(lastOperand));
         }
 
@@ -155,7 +153,7 @@ namespace MathExpressions.Tests
 
 /*
 
-    Support the four basis arithmetic operators:
+Support the four basis arithmetic operators:
 addition (+)
 subtractions (-)
 multiplication (*)
@@ -171,25 +169,4 @@ or int.MaxValue
 Remember that a unit test should test only a single condition, not multiple conditions. 
 For example rather than writing a unit test for addition, create separate unit tests to handle
 
-=============================================================================
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace AddisonWesley.Michaelis.EssentialCSharp.Chapter03.Listing03_03.Tests
-{
-    [TestClass]
-    public class ProgramTests
-    {
-        [TestMethod]
-        public void Main_WriteInventions()
-        {
-            const string expected =
-@"Bifocals (1784)
-Phonograph (1877)";
-
-            IntelliTect.TestTools.Console.ConsoleAssert.Expect(
-                expected, Program.Main);
-        }
-    }
-}
-===============================================================================
 */
