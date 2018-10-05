@@ -5,13 +5,14 @@ namespace MathExpressions
 {
     public class MathExpressions
     {
-        private string expr;
-        private string tempExpr;
+
         private char op;
         private string[] parts;
-        private bool isSubtraction;
         private double result;
+        private bool isSubtraction;
         private bool negNumAtBeginning;
+        private string expr;
+        private string tempExpr;
         private string firstOperand;
         private string lastOperand;
 
@@ -25,8 +26,8 @@ namespace MathExpressions
             int numMinuses;
             PrintIntro();
             GetInput();
-            Console.WriteLine("1");
-            if (op == '-')
+
+            if ((op == '-') && (SubtractionAlsoHasNegNumbers() > 1))
             {
                 numMinuses = SubtractionAlsoHasNegNumbers();
                 if (numMinuses > 1)
@@ -42,14 +43,13 @@ namespace MathExpressions
                             {
                                 firstOperand = "-" + parts[i];
                                 parts[i] = firstOperand;
-                            }
+                            } 
                             if (i == 1) lastOperand = parts[i];
-                            Console.Write("part" + i);
-                            Console.WriteLine(parts[i]);
                         }
 
                     }
-                    else if (numMinuses == 2) {
+                    else if (numMinuses == 2)
+                    {
                         int index = expr.IndexOf(op);
                         firstOperand = expr.Substring(0, index - 1);
                         lastOperand = expr.Substring(index + 1);
@@ -59,26 +59,26 @@ namespace MathExpressions
                     {
                         tempExpr = expr.Substring(1);
                         int nextMinus = tempExpr.IndexOf(op);
-                        firstOperand = expr.Substring(0, nextMinus);
-                        lastOperand = expr.Substring(nextMinus + 1);
+                        firstOperand = expr.Substring(1, nextMinus);
+                        lastOperand = expr.Substring(nextMinus + 2);
+                        result = int.Parse(firstOperand) - int.Parse(lastOperand);
                     }
-
-                    if (numMinuses == 1) SplitString();
-                    ValidateOperands();
-                    result = int.Parse(parts[0]) - int.Parse(parts[1]);
-                    Console.WriteLine("2");
-
-                    Console.WriteLine("result: " + result);
-                    // EvaluateExpression();
                 }
+                // only one minus here
+                if (numMinuses == 1)
+                {
+                    SplitString();
+                    ValidateOperands();
+                    result = int.Parse(firstOperand) - int.Parse(lastOperand);
+                }
+
+                Console.WriteLine("result: " + result);
             }
             else
             {
                 SplitString();
                 ValidateOperands();
                 EvaluateExpression();
-                Console.WriteLine("3");
-
             }
         }
 
@@ -111,12 +111,6 @@ namespace MathExpressions
         public void SplitString()
         {
             parts = this.expr.Split(this.op);
-
-            for (int i = 0; i < parts.Length; i++)
-            {
-                Console.Write("part" + i);
-                Console.WriteLine(parts[i]);
-            }
         }
 
         public bool ValidateOperands()
@@ -124,19 +118,16 @@ namespace MathExpressions
             foreach (string operand in parts) {
                 if (int.TryParse(operand, out int res))
                 {
-                    Console.WriteLine(res.ToString());
+                    //Console.WriteLine(res.ToString());
                 }
                 else
                 {
-                    Console.WriteLine("Your input expression was not valid....");
+                    Console.WriteLine("Your integer expression was not valid....");
+                    return false;
                 }
-                Console.WriteLine("result is: " + res);
+                //Console.WriteLine("result is: " + res);
             }
 
-
-            // int ans = 5 + 3;
-            // Evaluate the form for all of the four operators below
-            // +, -, *, /
             return false;
         }
 
@@ -155,7 +146,7 @@ namespace MathExpressions
         }
 
 
-        public bool checkDivideByZero(string lastOperand)
+        public bool CheckDivideByZero(string lastOperand)
         {
             if (lastOperand == "0") return true;
             else return false;
@@ -165,8 +156,8 @@ namespace MathExpressions
         {
             firstOperand = parts[0];
             lastOperand = parts[1];
-            bool divZero = true;
 
+            bool divZero = ((op == '/') && CheckDivideByZero(lastOperand));
             bool firstInRange = ValidateFirstOperandInRange(firstOperand);
             bool lastInRange = ValidateLastOperandInRange(lastOperand);
 
@@ -174,23 +165,11 @@ namespace MathExpressions
             else if (op == '*') result = int.Parse(parts[0]) * int.Parse(parts[1]);
             else if (op == '/')
             {
-                divZero = checkDivideByZero(lastOperand);
                 if (!divZero) result = int.Parse(parts[0]) / (double)int.Parse(parts[1]);
+                else Console.WriteLine("Cannot divide by zero.");
             }
-            else if (op == '-') result = int.Parse(parts[0]) - int.Parse(parts[1]);
-
-            if (divZero)
-            {
-                Console.WriteLine("Cannot divide by zero.");
-            }
-            else
-            {
-                Console.WriteLine("result: " + result);
-            }
+            if (!divZero) Console.WriteLine("result: " + result);
         }
-
-
-
 
 
         public bool ValidateExpr(string expr)
@@ -198,6 +177,7 @@ namespace MathExpressions
             bool good = false;
             Console.WriteLine("You entered {0}", this.expr);
             this.op = FindOperator(this.expr);
+
             if (this.op == '\0')
             {
                 Console.WriteLine("Your entry is invalid, please try again...");
@@ -211,9 +191,9 @@ namespace MathExpressions
             return good;
         }
 
+
         private int SubtractionAlsoHasNegNumbers()
         {
-            int index = 0;
             int count = 0;
             int exprLength = expr.Length;
             // get count of how many minus
@@ -233,6 +213,7 @@ namespace MathExpressions
             return count;
         }
 
+
         public static char FindOperator(string expr)
         {
             if (expr.Contains('+')) return '+';
@@ -242,6 +223,7 @@ namespace MathExpressions
             else return '\0';
         }
 
+
         public static void PrintIntro()
         {
             Console.WriteLine("Hello from the Math Expression Console!");
@@ -249,11 +231,11 @@ namespace MathExpressions
             Console.WriteLine("The operator can be +, -, *, or /, and the int can be negative.");
         }
 
+
         public static void Main(string[] args)
         {
             MathExpressions me = new MathExpressions();
             me.CalcLoop();
-
         }
     }
 }
