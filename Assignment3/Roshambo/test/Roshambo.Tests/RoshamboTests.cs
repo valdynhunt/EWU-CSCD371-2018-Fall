@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Roshambo.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class RoshamboTests
     {
         [TestMethod]
         public void TestMethod1()

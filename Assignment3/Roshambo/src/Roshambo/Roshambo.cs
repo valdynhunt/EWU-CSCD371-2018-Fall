@@ -2,7 +2,7 @@
 
 namespace Roshambo
 {
-    class Program
+    class Roshambo
     {
         static void Main(string[] args)
         {
