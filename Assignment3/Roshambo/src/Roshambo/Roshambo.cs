@@ -2,13 +2,16 @@
 
 namespace Roshambo
 {
-    class Roshambo
+    public class Roshambo
     {
         private int playerHealth;
         private int computerHealth;
         private string playerMove;
         private string computerMove;
         private const int BeginningHealth = 100;
+        private const string ROCK = "rock";
+        private const string PAPER = "paper";
+        private const string SCISSORS = "scissors";
        
 
         public Roshambo()
@@ -60,13 +63,13 @@ namespace Roshambo
             } while (anotherGame);
         }
 
-        private void printCurrentScores()
+        public void printCurrentScores()
         {
             Console.WriteLine("\nPlayer health: " + this.playerHealth);
             Console.WriteLine("Computer health: " + this.computerHealth);
         }
 
-        private void playATurn()
+        public void playATurn()
         {
             this.playerMove = goPlayer();
             this.computerMove = goComputer();
@@ -96,7 +99,7 @@ namespace Roshambo
 
         }
 
-        private void adjustScores(string winningObject, bool playerWinsTurn)
+        public void adjustScores(string winningObject, bool playerWinsTurn)
         {
             if (playerWinsTurn)
             {
@@ -130,7 +133,7 @@ namespace Roshambo
             }
         }
 
-        private string goComputer()
+        public string goComputer()
         {
             string play = "";
             DateTime dateTime = DateTime.Now;
@@ -152,7 +155,7 @@ namespace Roshambo
             return play;
         }
 
-        private string goPlayer()
+        public string goPlayer()
         {
             bool responseIsInvalid = true;
             string response = "";
@@ -174,18 +177,16 @@ namespace Roshambo
             return response;
         }
 
-        private static void PlayGame()
+        public static void PlayGame()
         {
             Roshambo play = new Roshambo();
             play.GameLoop();
             Console.WriteLine("\nThanks for playing Roshambo :)");
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             PlayGame(); // initialize class + do while
         }
-
-
     }
 }
