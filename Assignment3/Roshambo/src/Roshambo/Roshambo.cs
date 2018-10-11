@@ -60,7 +60,8 @@ namespace Roshambo
 
                 while ((this.playerHealth > 0) && (this.computerHealth > 0))
                 {
-                    PlayATurn();
+                    Tuple<string, string> tMoves = GetMoves();
+                    PlayATurn(tMoves);
                     tCurrentHealth = GetCurrentHealth();
                     Console.WriteLine("\nCurrent health:  " + tCurrentHealth.Item1 + " - player");
                     Console.WriteLine("\t\t " + tCurrentHealth.Item2 + " - computer");
@@ -81,11 +82,22 @@ namespace Roshambo
             Console.WriteLine("Computer health: " + this.computerHealth);
         }
 
-        public void PlayATurn()
+        public Tuple<string, string> GetMoves()
         {
             this.playerMove = GoPlayer();
             this.computerMove = GoComputer();
+
+            var tCurrentMoves = Tuple.Create<string, string>(this.playerMove, this.computerMove);
+
+            return tCurrentMoves;
+        }
+
+        public string PlayATurn(Tuple<string, string> tCurrentMoves)
+        {
             bool playerWinsTurn;
+            string playerMove = tCurrentMoves.Item1;
+            string computerMove = tCurrentMoves.Item2;
+            string result;
 
             Console.WriteLine("\nplayer move: " + playerMove + "\ncomputer move: " + computerMove);
 
@@ -106,9 +118,12 @@ namespace Roshambo
 
                 string winningObject = (playerWinsTurn == true) ? playerMove : computerMove;
                 AdjustScores(winningObject, playerWinsTurn);
-
+                result = (playerWinsTurn) ? "player" : "computer";
+            } else
+            {
+                result = "tie";
             }
-
+            return result;
         }
 
         public void AdjustScores(string winningObject, bool playerWinsTurn)

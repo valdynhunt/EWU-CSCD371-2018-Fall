@@ -1,12 +1,27 @@
 using IntelliTect.TestTools.Console;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
+using System.Text;
 
 namespace Roshambo.Tests
 {
     [TestClass]
     public class RoshamboTests
     {
+
+        [TestMethod]
+        public void Constructor_invokes_GreetPlayer()
+        {
+            string view = "Welcome to Roshambo, also known as Rock, Paper, Scissors.";
+
+            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view,
+            () =>
+            {
+                new Roshambo();
+            });
+        }
+
         [TestMethod]
         public void GreetPlayer_invokes_greeting()
         {
@@ -68,6 +83,7 @@ namespace Roshambo.Tests
         public void GoPlayer_choice_scissors_returns_scissors()
         {
             var sut = new Roshambo();
+
             string response = "scissors";
             string view = $@">>*Please enter your move (rock, paper, scissors):
 <<{response}
@@ -180,35 +196,210 @@ namespace Roshambo.Tests
         }
 
         [TestMethod]
-        public void GameLoop_()
-        {
-        }
-
-        [TestMethod]
-        public void PlayATurn_()
-        {
-        }
-
-        //========================================================================================
-        //========================================================================================
-
-        [TestMethod]
-        public void GoPlayer_choice_rock_returns_rock2()
+        public void PlayATurn_results_in_tie_if_both_play_rock()
         {
             var sut = new Roshambo();
-            string response = "rock";
-            string view = $@">>*Please enter your move (rock, paper, scissors):
-<<{response}
-";
-            //string returnValue = sut.GoPlayer();
-            //Assert.AreEqual(response, returnValue);
-            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
 
-            // Question - at this point, I am not testing what is returned from the method.
-            // Given IntelliTect syntax and MS Test, how would I structure the syntax to test the 
-            // actual return value....with the console interaction I could only think of how to test
-            // what is seen (view) as the interaction leading to the return...
+            string pMove = "rock";
+            string cMove = "rock";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("tie", returnedValue);
         }
+
+        [TestMethod]
+        public void PlayATurn_results_in_tie_if_both_play_paper()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "paper";
+            string cMove = "paper";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("tie", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_results_in_tie_if_both_play_scissors()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "scissors";
+            string cMove = "scissors";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("tie", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_player_wins_with_rock_against_scissors()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "rock";
+            string cMove = "scissors";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("player", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_player_loses_with_scissors_against_rock()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "scissors";
+            string cMove = "rock";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("computer", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_player_wins_with_scissors_against_paper()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "scissors";
+            string cMove = "paper";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("player", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_player_loses_with_paper_against_scissors()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "paper";
+            string cMove = "scissors";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("computer", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_player_wins_with_paper_against_rock()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "paper";
+            string cMove = "rock";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("player", returnedValue);
+        }
+
+        [TestMethod]
+        public void PlayATurn_player_loses_with_rock_against_paper()
+        {
+            var sut = new Roshambo();
+
+            string pMove = "rock";
+            string cMove = "paper";
+
+            var tMoves = Tuple.Create<string, string>(pMove, cMove);
+
+            string returnedValue = sut.PlayATurn(tMoves);
+
+            Assert.AreEqual("computer", returnedValue);
+        }
+
+        //[TestMethod]
+        //public void zGameLoop_()
+        //{
+        //    var sut = new Roshambo();
+        //    sut.GameLoop();
+
+        //}
+
+        //========================================================================================
+        //========================================================================================
+
+        //        [TestMethod]
+        //        public void zGetMoves_returns_valid_tuple_of_moves()
+        //        {
+        //            var stringBuilder = new StringBuilder();
+        //            var outputWriter = new StringWriter(stringBuilder);
+        //            Console.SetOut(outputWriter);
+
+        //            var sut = new Roshambo();
+        //            var testVariable = sut.GetMoves();
+
+        //            string move1 = testVariable.Item1;
+        //            string move2 = testVariable.Item2;
+
+        //            bool move1IsValid = ((move1.Equals("rock"))
+        //                || (move1.Equals("paper")) || (move1.Equals("scissors")));
+        //            bool move2IsValid = ((move2.Equals("rock"))
+        //                || (move2.Equals("paper")) || (move2.Equals("scissors")));
+
+
+        //            string response = "scissors";
+        //            string view = $@">>*Please enter your move (rock, paper, scissors):
+        //<<{response}
+        //";
+        //            stringBuilder.Append(view);
+
+        //            string output = stringBuilder.ToString();
+
+        //            Assert.IsTrue(move1IsValid);
+        //            Assert.IsTrue(move2IsValid);
+        //            Assert.Equals(testVariable, response);
+        //            Assert.Equals(view, output);
+        //            //IntelliTect.TestTools.Console.ConsoleAssert.Expect("", () => { sut.GetMoves(); });
+        //        }
+
+        //========================================================================================
+        //========================================================================================
+
+
+
+        //========================================================================================
+        //========================================================================================
+
+        //        [TestMethod]
+        //        public void zGoPlayer_choice_rock_returns_rock2()
+        //        {
+        //            var sut = new Roshambo();
+        //            string response = "rock";
+        //            string view = $@">>*Please enter your move (rock, paper, scissors):
+        //<<{response}
+        //";
+        //            //string returnValue = sut.GoPlayer();
+        //            //Assert.AreEqual(response, returnValue);
+        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
+
+        //            // Question - at this point, I am not testing what is returned from the method.
+        //            // Given IntelliTect syntax and MS Test, how would I structure the syntax to test the 
+        //            // actual return value....with the console interaction I could only think of how to test
+        //            // what is seen (view) as the interaction leading to the return...
+        //        }
 
         //========================================================================================
         //========================================================================================
