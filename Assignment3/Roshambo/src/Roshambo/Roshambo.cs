@@ -16,17 +16,29 @@ namespace Roshambo
 
         public Roshambo()
         {
-            Console.WriteLine("Welcome to Roshambo, also known" +
-                " as Rock, Paper, Scissors.");
-
-            this.playerHealth = 0;
-            this.computerHealth = 0;
+            GreetPlayer();
         }
 
-        public void InitializeScores()
+        public void GreetPlayer()
+        {
+            Console.WriteLine("Welcome to Roshambo, also known" +
+    " as Rock, Paper, Scissors.");
+        }
+
+        public void InitializeHealth()
         {
             this.playerHealth = BeginningHealth;
             this.computerHealth = BeginningHealth;
+        }
+
+        public int GetPlayerHealth()
+        {
+            return this.playerHealth;
+        }
+
+        public int GetComputerHealth()
+        {
+            return this.computerHealth;
         }
 
         public Tuple<int, int> GetCurrentHealth()
@@ -40,7 +52,7 @@ namespace Roshambo
             bool anotherGame = false;
             do
             {
-                InitializeScores();
+                InitializeHealth();
                 Tuple<int, int> tCurrentHealth = GetCurrentHealth();
                 Console.WriteLine("\nBeginning health:  " + tCurrentHealth.Item1 + " - player");
                 Console.WriteLine("\t\t   " + tCurrentHealth.Item2 + " - computer");
@@ -48,7 +60,7 @@ namespace Roshambo
 
                 while ((this.playerHealth > 0) && (this.computerHealth > 0))
                 {
-                    playATurn();
+                    PlayATurn();
                     tCurrentHealth = GetCurrentHealth();
                     Console.WriteLine("\nCurrent health:  " + tCurrentHealth.Item1 + " - player");
                     Console.WriteLine("\t\t " + tCurrentHealth.Item2 + " - computer");
@@ -63,51 +75,51 @@ namespace Roshambo
             } while (anotherGame);
         }
 
-        public void printCurrentScores()
+        public void PrintCurrentHealth()
         {
             Console.WriteLine("\nPlayer health: " + this.playerHealth);
             Console.WriteLine("Computer health: " + this.computerHealth);
         }
 
-        public void playATurn()
+        public void PlayATurn()
         {
-            this.playerMove = goPlayer();
-            this.computerMove = goComputer();
+            this.playerMove = GoPlayer();
+            this.computerMove = GoComputer();
             bool playerWinsTurn;
 
             Console.WriteLine("\nplayer move: " + playerMove + "\ncomputer move: " + computerMove);
 
             if (!playerMove.Equals(computerMove))
             {
-                if (playerMove.Equals("rock"))
+                if (playerMove.Equals(ROCK))
                 {
-                    playerWinsTurn = (computerMove.Equals("scissors")) ? true : false;
+                    playerWinsTurn = (computerMove.Equals(SCISSORS)) ? true : false;
                 }
-                else if (playerMove.Equals("paper"))
+                else if (playerMove.Equals(PAPER))
                 {
-                    playerWinsTurn = (computerMove.Equals("rock")) ? true : false;
+                    playerWinsTurn = (computerMove.Equals(ROCK)) ? true : false;
                 }
                 else
                 {
-                    playerWinsTurn = (computerMove.Equals("paper")) ? true : false;
+                    playerWinsTurn = (computerMove.Equals(PAPER)) ? true : false;
                 }
 
                 string winningObject = (playerWinsTurn == true) ? playerMove : computerMove;
-                adjustScores(winningObject, playerWinsTurn);
+                AdjustScores(winningObject, playerWinsTurn);
 
             }
 
         }
 
-        public void adjustScores(string winningObject, bool playerWinsTurn)
+        public void AdjustScores(string winningObject, bool playerWinsTurn)
         {
             if (playerWinsTurn)
             {
-                if (winningObject.Equals("rock"))
+                if (winningObject.Equals(ROCK))
                 {
                     this.computerHealth -= 20;
                 }
-                else if (winningObject.Equals("paper"))
+                else if (winningObject.Equals(PAPER))
                 {
                     this.computerHealth -= 10;
                 }
@@ -118,11 +130,11 @@ namespace Roshambo
             }
             else
             {
-                if (winningObject.Equals("rock"))
+                if (winningObject.Equals(ROCK))
                 {
                     this.playerHealth -= 20;
                 }
-                else if (winningObject.Equals("paper"))
+                else if (winningObject.Equals(PAPER))
                 {
                     this.playerHealth -= 10;
                 }
@@ -133,7 +145,7 @@ namespace Roshambo
             }
         }
 
-        public string goComputer()
+        public string GoComputer()
         {
             string play = "";
             DateTime dateTime = DateTime.Now;
@@ -141,31 +153,33 @@ namespace Roshambo
 
             if (nowSeconds % 3 == 0)
             {
-                play = "rock";
+                play = ROCK;
             }
             else if (nowSeconds % 2 == 0)
             {
-                play = "paper";
+                play = PAPER;
             }
             else
             {
-                play = "scissors";
+                play = SCISSORS;
             }
 
             return play;
         }
 
-        public string goPlayer()
+        public string GoPlayer()
         {
             bool responseIsInvalid = true;
             string response = "";
 
-            Console.Write("\n * Please enter your move (rock, paper, scissors): ");
+            Console.WriteLine("*Please enter your move (rock, paper, scissors):");
 
             while (responseIsInvalid)
             {
                 response = Console.ReadLine();
-                if (response.Equals("rock") || response.Equals("paper") || response.Equals("scissors"))
+                if (response.Equals(ROCK) 
+                    || (response.Equals(PAPER)) 
+                    || (response.Equals(SCISSORS)))
                 {
                     responseIsInvalid = false;
                 }
@@ -177,16 +191,13 @@ namespace Roshambo
             return response;
         }
 
-        public static void PlayGame()
+
+        public static void Main(string[] args)
         {
             Roshambo play = new Roshambo();
             play.GameLoop();
             Console.WriteLine("\nThanks for playing Roshambo :)");
-        }
-
-        public static void Main(string[] args)
-        {
-            PlayGame(); // initialize class + do while
+            System.Threading.Thread.Sleep(2000);
         }
     }
 }
