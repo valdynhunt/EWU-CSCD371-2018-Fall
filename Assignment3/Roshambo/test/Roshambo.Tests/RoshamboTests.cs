@@ -100,21 +100,118 @@ namespace Roshambo.Tests
         }
 
         [TestMethod]
+        public void GoComputer_returns_valid_selection()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+            string returnValue = sut.GoComputer();
+
+            bool returnedValueIsValid = (returnValue.Equals("rock")
+                                        || returnValue.Equals("paper")
+                                        || returnValue.Equals("scissors"));
+
+            Assert.IsTrue(returnedValueIsValid);
+        }
+
+        [TestMethod]
+        public void AdjustScores_verify_player_wins_with_rock()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+
+            int expectedHealth = sut.GetComputerHealth() - 20;
+            sut.AdjustScores("rock", true);
+            Assert.AreEqual(expectedHealth, sut.GetComputerHealth());
+        }
+
+        [TestMethod]
+        public void AdjustScores_verify_player_wins_with_paper()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+
+            int expectedHealth = sut.GetComputerHealth() - 10;
+            sut.AdjustScores("paper", true);
+            Assert.AreEqual(expectedHealth, sut.GetComputerHealth());
+        }
+
+        [TestMethod]
+        public void AdjustScores_verify_player_wins_with_scissors()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+
+            int expectedHealth = sut.GetComputerHealth() - 15;
+            sut.AdjustScores("scissors", true);
+            Assert.AreEqual(expectedHealth, sut.GetComputerHealth());
+        }
+
+        [TestMethod]
+        public void AdjustScores_verify_computer_wins_with_rock()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+
+            int expectedHealth = sut.GetPlayerHealth() - 20;
+            sut.AdjustScores("rock", false);
+            Assert.AreEqual(expectedHealth, sut.GetPlayerHealth());
+        }
+
+        [TestMethod]
+        public void AdjustScores_verify_computer_wins_with_paper()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+
+            int expectedHealth = sut.GetPlayerHealth() - 10;
+            sut.AdjustScores("paper", false);
+            Assert.AreEqual(expectedHealth, sut.GetPlayerHealth());
+        }
+
+        [TestMethod]
+        public void AdjustScores_verify_computer_wins_with_scissors()
+        {
+            var sut = new Roshambo();
+            sut.InitializeHealth();
+
+            int expectedHealth = sut.GetPlayerHealth() - 15;
+            sut.AdjustScores("scissors", false);
+            Assert.AreEqual(expectedHealth, sut.GetPlayerHealth());
+        }
+
+        [TestMethod]
         public void GameLoop_()
         {
         }
-
-
 
         [TestMethod]
         public void PlayATurn_()
         {
         }
 
+        //========================================================================================
+        //========================================================================================
+
         [TestMethod]
-        public void AdjustScores_()
+        public void GoPlayer_choice_rock_returns_rock2()
         {
+            var sut = new Roshambo();
+            string response = "rock";
+            string view = $@">>*Please enter your move (rock, paper, scissors):
+<<{response}
+";
+            //string returnValue = sut.GoPlayer();
+            //Assert.AreEqual(response, returnValue);
+            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
+
+            // Question - at this point, I am not testing what is returned from the method.
+            // Given IntelliTect syntax and MS Test, how would I structure the syntax to test the 
+            // actual return value....with the console interaction I could only think of how to test
+            // what is seen (view) as the interaction leading to the return...
         }
+
+        //========================================================================================
+        //========================================================================================
 
     }
 }
