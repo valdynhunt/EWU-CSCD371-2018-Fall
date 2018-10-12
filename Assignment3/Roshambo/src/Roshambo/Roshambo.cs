@@ -76,6 +76,13 @@ namespace Roshambo
             } while (anotherGame);
         }
 
+        public string GetPlayerMove()
+        {
+            Console.WriteLine("*Please enter your move (rock, paper, scissors):");
+            string response = Console.ReadLine();
+            return response;
+        }
+
         public void PrintCurrentHealth()
         {
             Console.WriteLine("\nPlayer health: " + this.playerHealth);
@@ -84,8 +91,10 @@ namespace Roshambo
 
         public Tuple<string, string> GetMoves()
         {
-            this.playerMove = GoPlayer();
-            this.computerMove = GoComputer();
+            this.playerMove = GetPlayerMove();
+            GoPlayer(this.playerMove);
+            int nowSeconds = GetNowSeconds();
+            this.computerMove = GoComputer(nowSeconds);
 
             var tCurrentMoves = Tuple.Create<string, string>(this.playerMove, this.computerMove);
 
@@ -160,11 +169,15 @@ namespace Roshambo
             }
         }
 
-        public string GoComputer()
+        public int GetNowSeconds()
+        {
+            DateTime dateTime = DateTime.Now;
+            return dateTime.Second;
+        }
+
+        public string GoComputer(int nowSeconds)
         {
             string play = "";
-            DateTime dateTime = DateTime.Now;
-            int nowSeconds = dateTime.Second;
 
             if (nowSeconds % 3 == 0)
             {
@@ -182,16 +195,11 @@ namespace Roshambo
             return play;
         }
 
-        public string GoPlayer()
+        public string GoPlayer(string response)
         {
             bool responseIsInvalid = true;
-            string response = "";
-
-            Console.WriteLine("*Please enter your move (rock, paper, scissors):");
-
             while (responseIsInvalid)
             {
-                response = Console.ReadLine();
                 if (response.Equals(ROCK) 
                     || (response.Equals(PAPER)) 
                     || (response.Equals(SCISSORS)))
@@ -200,11 +208,19 @@ namespace Roshambo
                 }
                 else
                 {
-                    Console.Write("Your move is invalid. Please enter your move again: ");
+                    InputInvalidMessage();
+                    response = GetPlayerMove();
                 }
             }
             return response;
         }
+
+        public void InputInvalidMessage()
+        {
+            Console.WriteLine("Your move is invalid. Please enter your move again.");
+        }
+
+
 
 
         public static void Main(string[] args)

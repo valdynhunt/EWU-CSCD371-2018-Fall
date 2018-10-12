@@ -1,8 +1,6 @@
-using IntelliTect.TestTools.Console;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.IO;
-using System.Text;
+
 
 namespace Roshambo.Tests
 {
@@ -56,7 +54,7 @@ namespace Roshambo.Tests
         }
 
         [TestMethod]
-        public void GoPlayer_choice_rock_returns_rock()
+        public void GetPlayerMove_choice_rock_returns_rock()
         {
             var sut = new Roshambo();
             string response = "rock";
@@ -64,32 +62,48 @@ namespace Roshambo.Tests
 <<{response}
 ";
 
-            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
+            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GetPlayerMove(); });
+        }
+
+        [TestMethod]
+        public void GoPlayer_choice_rock_returns_rock()
+        {
+            var sut = new Roshambo();
+            string selection = "rock";
+            string response = sut.GoPlayer(selection);
+            Assert.AreEqual(selection, response);
         }
 
         [TestMethod]
         public void GoPlayer_choice_paper_returns_paper()
         {
             var sut = new Roshambo();
-            string response = "paper";
-            string view = $@">>*Please enter your move (rock, paper, scissors):
-<<{response}
-";
-
-            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
+            string selection = "paper";
+            string response = sut.GoPlayer(selection);
+            Assert.AreEqual(selection, response);
         }
 
         [TestMethod]
         public void GoPlayer_choice_scissors_returns_scissors()
         {
             var sut = new Roshambo();
+            string selection = "scissors";
+            string response = sut.GoPlayer(selection);
+            Assert.AreEqual(selection, response);
+        }
 
-            string response = "scissors";
-            string view = $@">>*Please enter your move (rock, paper, scissors):
-<<{response}
+        [TestMethod]
+        public void GoPlayer_choice_invalid_reprompts()
+        {
+            var sut = new Roshambo();
+            string selection = "spock";
+            string secondSelection = "paper";
+            string view = $@">>Your move is invalid. Please enter your move again.
+>>*Please enter your move (rock, paper, scissors):
+<<{secondSelection}
 ";
 
-            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
+            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(selection); });
         }
 
         [TestMethod]
@@ -116,11 +130,48 @@ namespace Roshambo.Tests
         }
 
         [TestMethod]
-        public void GoComputer_returns_valid_selection()
+        public void GetNowSeconds_returns_int_seconds()
         {
             var sut = new Roshambo();
-            sut.InitializeHealth();
-            string returnValue = sut.GoComputer();
+            int nowSeconds = sut.GetNowSeconds();
+
+            Assert.AreEqual(DateTime.Now.Second, sut.GetNowSeconds());
+        }
+
+        [TestMethod]
+        public void GoComputer_returns_rock()
+        {
+            var sut = new Roshambo();
+            int nowSeconds = 3;
+            string returnValue = sut.GoComputer(nowSeconds);
+
+            bool returnedValueIsValid = (returnValue.Equals("rock")
+                                        || returnValue.Equals("paper")
+                                        || returnValue.Equals("scissors"));
+
+            Assert.IsTrue(returnedValueIsValid);
+        }
+
+        [TestMethod]
+        public void GoComputer_returns_paper()
+        {
+            var sut = new Roshambo();
+            int nowSeconds = 2;
+            string returnValue = sut.GoComputer(nowSeconds);
+
+            bool returnedValueIsValid = (returnValue.Equals("rock")
+                                        || returnValue.Equals("paper")
+                                        || returnValue.Equals("scissors"));
+
+            Assert.IsTrue(returnedValueIsValid);
+        }
+
+        [TestMethod]
+        public void GoComputer_returns_scissors()
+        {
+            var sut = new Roshambo();
+            int nowSeconds = 5;
+            string returnValue = sut.GoComputer(nowSeconds);
 
             bool returnedValueIsValid = (returnValue.Equals("rock")
                                         || returnValue.Equals("paper")
@@ -329,81 +380,7 @@ namespace Roshambo.Tests
 
             Assert.AreEqual("computer", returnedValue);
         }
-
-        //[TestMethod]
-        //public void zGameLoop_()
-        //{
-        //    var sut = new Roshambo();
-        //    sut.GameLoop();
-
-        //}
-
-        //========================================================================================
-        //========================================================================================
-
-        //        [TestMethod]
-        //        public void zGetMoves_returns_valid_tuple_of_moves()
-        //        {
-        //            var stringBuilder = new StringBuilder();
-        //            var outputWriter = new StringWriter(stringBuilder);
-        //            Console.SetOut(outputWriter);
-
-        //            var sut = new Roshambo();
-        //            var testVariable = sut.GetMoves();
-
-        //            string move1 = testVariable.Item1;
-        //            string move2 = testVariable.Item2;
-
-        //            bool move1IsValid = ((move1.Equals("rock"))
-        //                || (move1.Equals("paper")) || (move1.Equals("scissors")));
-        //            bool move2IsValid = ((move2.Equals("rock"))
-        //                || (move2.Equals("paper")) || (move2.Equals("scissors")));
-
-
-        //            string response = "scissors";
-        //            string view = $@">>*Please enter your move (rock, paper, scissors):
-        //<<{response}
-        //";
-        //            stringBuilder.Append(view);
-
-        //            string output = stringBuilder.ToString();
-
-        //            Assert.IsTrue(move1IsValid);
-        //            Assert.IsTrue(move2IsValid);
-        //            Assert.Equals(testVariable, response);
-        //            Assert.Equals(view, output);
-        //            //IntelliTect.TestTools.Console.ConsoleAssert.Expect("", () => { sut.GetMoves(); });
-        //        }
-
-        //========================================================================================
-        //========================================================================================
-
-
-
-        //========================================================================================
-        //========================================================================================
-
-        //        [TestMethod]
-        //        public void zGoPlayer_choice_rock_returns_rock2()
-        //        {
-        //            var sut = new Roshambo();
-        //            string response = "rock";
-        //            string view = $@">>*Please enter your move (rock, paper, scissors):
-        //<<{response}
-        //";
-        //            //string returnValue = sut.GoPlayer();
-        //            //Assert.AreEqual(response, returnValue);
-        //            IntelliTect.TestTools.Console.ConsoleAssert.Expect(view, () => { sut.GoPlayer(); });
-
-        //            // Question - at this point, I am not testing what is returned from the method.
-        //            // Given IntelliTect syntax and MS Test, how would I structure the syntax to test the 
-        //            // actual return value....with the console interaction I could only think of how to test
-        //            // what is seen (view) as the interaction leading to the return...
-        //        }
-
-        //========================================================================================
-        //========================================================================================
-
+        
     }
 }
 
