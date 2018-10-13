@@ -15,7 +15,10 @@ In this assignment, we will be using test driven development to create new class
   * Calculated properties
 * Add a (one time) `Event` class that has some common properties with `UniversityCourse` but `Event` should be a one time occurrence while the `UniversityCourse` should have a repeating schedule. Don't worry about the nitty gritty details of defining a repeating schedule for the `UniversityCourse`.  (We will do that in a future exercise.)  Using a string for the "course schedule" is acceptable.
 * Provide a `GetSummaryInformation()` method on both `UniversityCourse` and `Event` that returns a summary as text.
-* Provide an example (such as display) using polymorphism to retrive the summary information for a collection of events/courses.
+* Provide a method (such as a display method) on a static class that uses polymorphism to retrieve the summary information for a collection of events/courses.
+* Define a Display method on a static class.  In the display method use a switch statement with pattern matching to call the `GetSummaryInformation()` method if it exists or call `ToString()` if it doesn't. The invocation of the `GetSummaryInforattion()` method should use polymorphism.
+* Include appropriate constructors in all classes
+* Include a deconstructor in one or more of your classes
 * Add a property that tracks the number of times courses/events are instantiated.
 * All classes and class members should have appropriate instance (static/instance) scope and appropriately assigned access modifiers
 * All classes should have validation such that they can't have invalid state
