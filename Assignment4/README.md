@@ -21,7 +21,7 @@ In this assignment, we will be using test driven development to create new class
 * Include a deconstructor in one or more of your classes
 * Add a property that tracks the number of times courses/events are instantiated.
 * All classes and class members should have appropriate instance (static/instance) scope and appropriately assigned access modifiers
-* All classes should have validation such that they can't have invalid state
+* All classes should have validation such that they can't be in an invalid state
 * Read some of Chapter 8 by 2018-10-18
 
 ## Coding Requirements
