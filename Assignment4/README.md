@@ -13,10 +13,10 @@ In this assignment, we will be using test driven development to create new class
   * Automatically implemented properties
   * Properties with validation
   * Calculated properties
-* Add a (one time) `Event` class that has some common properties with `UniversityCourse` but `Event` should be a one time occurrence while the `UniversityCourse` should have a repeating schedule. Don't worry about the nitty gritty details of defining a repeating schedule for the `UniversityCourse`.  (We will do that in a future exercise.)  Using a string for the "course schedule" is acceptable.
+* Add a (one time) `Event` class that has some common properties with `UniversityCourse` but `Event` should be a one time occurrence while the `UniversityCourse` should have a repeating schedule. Don't worry about the nitty gritty details of defining a repeating schedule for the `UniversityCourse`.  (We will possibly do that in a future exercise.)  Using a string for the "course schedule" is acceptable.
 * Provide a `GetSummaryInformation()` method on both `UniversityCourse` and `Event` that returns a summary as text.
 * Provide a method (such as a display method) on a static class that uses polymorphism to retrieve the summary information for a collection of events/courses.
-* Define a Display method on a static class.  In the display method use a switch statement with pattern matching to call the `GetSummaryInformation()` method if it exists or call `ToString()` if it doesn't. The invocation of the `GetSummaryInforattion()` method should use polymorphism.
+* Define a Display method on a static class.  In the display method use a switch statement with pattern matching to call the `GetSummaryInformation()` method if it exists or call `ToString()` if it doesn't. The invocation of the `GetSummaryInformation()` method should use polymorphism.
 * Include appropriate constructors in all classes
 * Include a deconstructor in one or more of your classes
 * Add a property that tracks the number of times courses/events are instantiated.
@@ -30,6 +30,6 @@ In this assignment, we will be using test driven development to create new class
 
 ## All Assignments going forward
 
-* **All "production" code should be developed using TDD.**
+* **All production code should be unit tested.  And, although we can't verify it, you are encouraged to do so following a TDD process.**
 * **All projects should have project properties set so that warnings are reported as errors by the compiler**
 * **Follow all coding guidelines for chapters covered**
