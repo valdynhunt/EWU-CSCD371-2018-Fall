@@ -11,9 +11,8 @@ namespace LoginStuff.Tests
         {
             Person person = new Person("Inigo", "Montoya", "Password");
             Assert.AreEqual("Inigo", person.FirstName);
-            Assert.AreEqual("Inigo", person.LastName);
+            Assert.AreEqual("Montoya", person.LastName);
             Assert.AreEqual("Inigo.Montoya", person.UserName);
-
         }
 
         [TestMethod]

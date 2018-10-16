@@ -1,16 +1,37 @@
-﻿namespace LoginStuff.Tests
+﻿
+namespace LoginStuff.Tests
 {
     public class Person
     {
-        public string UserName;
+        private string _UserName;
+        public string UserName
+        {
+            get
+            {
+                return $"{FirstName}.{LastName}";
+            }
+            set
+            {
+                string[] parts = value.Split(".");
+                FirstName = parts[0];
+                LastName = parts[1];
+            }
+        }
+
         private string Password;
 
         public string LastName { get; set; }
 
-
+        private int _Age;
+        public int Age
+        {
+            get { return _Age; }
+            set { _Age = value; }
+        }
 
         private string _FirstName;
-        public string FirstName {
+        public string FirstName
+        {
             get
             {
                 return _FirstName;
@@ -21,6 +42,7 @@
             }
         }
 
+
         public Person(string userName, string password)
         {
             UserName = userName;
@@ -29,7 +51,8 @@
 
         public Person(string firstName, string lastName, string password)
         {
-            UserName = $"{firstName}.{lastName}";
+            FirstName = firstName;
+            LastName = lastName;
             Password = password;
         }
 
