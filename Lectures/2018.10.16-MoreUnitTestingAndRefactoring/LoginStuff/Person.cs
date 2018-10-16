@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace LoginStuff.Tests
 {
     public class Person
@@ -22,12 +24,7 @@ namespace LoginStuff.Tests
 
         public string LastName { get; set; }
 
-        private int _Age;
-        public int Age
-        {
-            get { return _Age; }
-            set { _Age = value; }
-        }
+        public int Age { get; }
 
         private string _FirstName;
         public string FirstName
@@ -38,18 +35,38 @@ namespace LoginStuff.Tests
             }
             set
             {
+                if (value is null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                    //throw new ArgumentNullException("value");
+                }
                 _FirstName = value;
             }
         }
 
-
-        public Person(string userName, string password)
+        public void Deconstruct(out string firstName, out string lastName)
         {
-            UserName = userName;
-            Password = password;
+            firstName = FirstName;
+            lastName = LastName;
+        }
+
+        public void Deconstruct(out string firstName, out string lastName,
+            out string password)
+        {
+            Deconstruct(out firstName, out lastName);
+            //firstName = FirstName;
+            //lastName = LastName;
+            password = Password;
+        }
+
+        public Person(string firstName, string lastName)
+            : this(firstName, lastName, null)
+        {
+
         }
 
         public Person(string firstName, string lastName, string password)
+            //: this(firstName, lastName)
         {
             FirstName = firstName;
             LastName = lastName;
