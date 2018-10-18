@@ -35,15 +35,10 @@ namespace UniversityCourse {
             }
         }
 
-        //public string Schedule { get; private set; }
-        //public string Description { get; private set; }
-        //public string Location { get; private set; }
-        //public int Capacity { get; private set; }
-
-        public string Schedule { get; set; }
-        public string Description { get; set; }
-        public string Location { get; set; }
-        public int Capacity { get; set; }
+        public string Schedule { get; private set; }
+        public string Description { get; private set; }
+        public string Location { get; private set; }
+        public int Capacity { get; private set; }
 
     }
 }

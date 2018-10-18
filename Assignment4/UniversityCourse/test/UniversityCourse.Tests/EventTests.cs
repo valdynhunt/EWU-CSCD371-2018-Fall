@@ -13,8 +13,6 @@ namespace UniversityCourse.Tests
             Event ev = new Event(null, "December 3rd, 4p - 6p", "Learning how to do it all.", "Liberty Lake, WA", 85);
         }
 
-        //Event event = new Event(null, "December 3rd, 4p - 6p", "Learning how to do it all.", "Liberty Lake, WA", 85);
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void Name_AssignEmpty_Throws()
