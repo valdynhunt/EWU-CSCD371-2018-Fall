@@ -35,9 +35,75 @@ namespace UniversityCourse {
             }
         }
 
-        public string Schedule { get; private set; }
-        public string Description { get; private set; }
-        public string Location { get; private set; }
+        private string _Schedule;
+        public string Schedule
+        {
+            get
+            {
+                return _Schedule;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Name), "Schedule cannot be null.");
+                }
+
+                if (value.Equals(""))
+                {
+                    throw new ArgumentException(nameof(Name), "Schedule cannot be empty.");
+                }
+
+                _Schedule = value;
+            }
+        }
+
+        private string _Description;
+        public string Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Name), "Description cannot be null.");
+                }
+
+                if (value.Equals(""))
+                {
+                    throw new ArgumentException(nameof(Name), "Description cannot be empty.");
+                }
+
+                _Description = value;
+            }
+        }
+
+        private string _Location;
+        public string Location
+        {
+            get
+            {
+                return _Location;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Name), "Location cannot be null.");
+                }
+
+                if (value.Equals(""))
+                {
+                    throw new ArgumentException(nameof(Name), "Location cannot be empty.");
+                }
+
+                _Location = value;
+            }
+        }
+
         public int Capacity { get; private set; }
 
     }

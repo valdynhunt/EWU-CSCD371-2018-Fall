@@ -41,28 +41,7 @@ namespace UniversityCourse
         }
 
         public int SectionNumber { get; set; }
-        // private string _Name;
-        // public string Name 
-        // {
-        //     get
-        //     {
-        //         return _Name;
-        //     }
-        //     set
-        //     {
-        //         if (value == null) 
-        //         {
-        //             throw new ArgumentNullException(nameof(Name), "Name cannot be null.");
-        //         }
 
-        //         if (value.Equals("")) 
-        //         {
-        //             throw new ArgumentException(nameof(Name), "Name cannot be empty.");
-        //         }
-                
-        //         _Name = value;
-        //     }
-        // }
 
         private string _DeptPrefix;
         public string DeptPrefix 
@@ -92,16 +71,12 @@ namespace UniversityCourse
         public UniversityCourse(string name, string schedule, string description, string location, int capacity, int crn, string deptPrefix, int courseNumber, int sectionNumber)
         : base(name, schedule, description, location, capacity)
         {   
-            //Name = name;
             Crn = crn;
             DeptPrefix = deptPrefix;
             CourseNumber = courseNumber;
             SectionNumber = sectionNumber;
         }
 
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        public static void Main(string[] args) { }
     }
 }

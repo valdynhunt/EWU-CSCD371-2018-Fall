@@ -21,6 +21,48 @@ namespace UniversityCourse.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Schedule_AssignNull_Throws()
+        {
+            Event ev = new Event("Programming 1", null, "Learning how to do it all.", "Liberty Lake, WA", 85);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Schedule_AssignEmpty_Throws()
+        {
+            Event ev = new Event("Programming 1", "", "Learning how to do it all.", "Liberty Lake, WA", 85);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Description_AssignNull_Throws()
+        {
+            Event ev = new Event("Programming 1", "December 3rd, 4p - 6p", null, "Liberty Lake, WA", 85);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Description_AssignEmpty_Throws()
+        {
+            Event ev = new Event("Programming 1", "December 3rd, 4p - 6p", "", "Liberty Lake, WA", 85);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Location_AssignNull_Throws()
+        {
+            Event ev = new Event("Programming 1", "December 3rd, 4p - 6p", "Learning how to do it all.", null, 85);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Location_AssignEmpty_Throws()
+        {
+            Event ev = new Event("Programming 1", "December 3rd, 4p - 6p", "Learning how to do it all.", "", 85);
+        }
+
+        [TestMethod]
         public void Create_Event_Success()
         {
             Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018","Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
