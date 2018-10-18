@@ -3,6 +3,14 @@ using System;
 namespace UniversityCourse {
 
     public class Event {
+        public Event(string name, string schedule, string description, string location, int capacity)
+        {
+            Name = name;
+            Schedule = schedule;
+            Description = description;
+            Location = location;
+            Capacity = capacity;
+        }
 
         private string _Name;
         public string Name 
@@ -36,16 +44,6 @@ namespace UniversityCourse {
         public string Description { get; set; }
         public string Location { get; set; }
         public int Capacity { get; set; }
-
-
-        public Event(string name, string schedule, string description, string location, int capacity) 
-        {
-            Name = name;
-            Schedule = schedule;
-            Description = description;
-            Location = location;
-            Capacity = capacity;
-        }
 
     }
 }
