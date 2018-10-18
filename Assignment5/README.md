@@ -6,7 +6,7 @@ This assignment will use some of the code files you created in Assignment 4. For
 * Read through Chapter 8 by 10/23/2018
 * Read through Chapter 9 by 10/25/2018
 
-## Code Review
+## Code Review (due 10/30/2018)
 * Perform a Code Review on another person's Assignment 4 pull request.
 * Make sure you mark yourself as the reviewer on GitHub.
 * A code review MUST have comments
