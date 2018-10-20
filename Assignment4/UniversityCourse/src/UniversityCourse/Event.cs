@@ -12,6 +12,11 @@ namespace UniversityCourse {
             Capacity = capacity;
         }
 
+        public void GetSummaryInformation()
+        {
+            Console.WriteLine();
+        }
+
         private string _Name;
         public string Name 
         {
