@@ -84,6 +84,22 @@ namespace UniversityCourse.Tests
             int after = Event.NumInstances;
             Assert.AreEqual(1, after - before);
         }
+
+        [TestMethod]
+        public void GetSummaryInformation_Returns_Instance_Info()
+        {
+            Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
+            string expected = $@"
+-----------Event Summary ----------
+Name: {ev.Name}
+Schedule: {ev.Schedule}
+Description: {ev.Description}
+Location: {ev.Location}
+Capacity: {ev.Capacity}
+
+";
+            Assert.AreEqual(expected, ev.GetSummaryInformation());
+        }
     }
 }
 

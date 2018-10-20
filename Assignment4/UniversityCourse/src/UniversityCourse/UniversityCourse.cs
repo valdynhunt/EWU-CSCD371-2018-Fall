@@ -236,7 +236,7 @@ namespace UniversityCourse
         public new virtual string GetSummaryInformation()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("-----------University Course Summary ----------");
+            sb.Append(Environment.NewLine + "-----------University Course Summary ----------" + Environment.NewLine);
             sb.Append("Name: " + Name + Environment.NewLine);
             sb.Append("Schedule: " + Schedule + Environment.NewLine);
             sb.Append("Description: " + Description + Environment.NewLine);
@@ -257,6 +257,11 @@ namespace UniversityCourse
             return sb.ToString();
         }
 
-        public static void Main(string[] args) { }
+        public static void Main(string[] args) {
+            UniversityCourse course1 = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
+    "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
+            Console.WriteLine(course1.GetSummaryInformation());
+            Console.WriteLine("instances: " + Event.NumInstances);
+        }
     }
 }

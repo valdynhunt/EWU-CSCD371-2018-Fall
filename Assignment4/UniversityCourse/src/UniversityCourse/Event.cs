@@ -25,7 +25,7 @@ namespace UniversityCourse {
         public string GetSummaryInformation()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("-----------Event Summary ----------");
+            sb.Append(Environment.NewLine + "-----------Event Summary ----------" + Environment.NewLine);
             sb.Append("Name: " + Name + Environment.NewLine);
             sb.Append("Schedule: " + Schedule + Environment.NewLine);
             sb.Append("Description: " + Description + Environment.NewLine);
