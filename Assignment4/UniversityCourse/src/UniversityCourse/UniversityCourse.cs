@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Text;
 
 namespace UniversityCourse
 {
     public class UniversityCourse : Event
     {
+       
+
         private int _Crn;
         public int Crn 
         {
@@ -217,7 +220,7 @@ namespace UniversityCourse
             int sectionNumber, string instructor, string building, int roomNumber, 
             int credits, int registered)
         : base(name, schedule, description, location, capacity)
-        {   
+        {
             Crn = crn;
             DeptPrefix = deptPrefix;
             CourseNumber = courseNumber;
@@ -227,6 +230,31 @@ namespace UniversityCourse
             RoomNumber = roomNumber;
             Credits = credits;
             Registered = registered;
+        }
+
+
+        public new virtual string GetSummaryInformation()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("-----------University Course Summary ----------");
+            sb.Append("Name: " + Name + Environment.NewLine);
+            sb.Append("Schedule: " + Schedule + Environment.NewLine);
+            sb.Append("Description: " + Description + Environment.NewLine);
+            sb.Append("Location: " + Location + Environment.NewLine);
+            sb.Append("Capacity: " + Capacity + Environment.NewLine);
+            sb.Append("CRN: " + Crn + Environment.NewLine);
+            sb.Append("Dept. Prefix: " + DeptPrefix + Environment.NewLine);
+            sb.Append("Course Number: " + CourseNumber + Environment.NewLine);
+            sb.Append("Section Number: " + SectionNumber + Environment.NewLine);
+            sb.Append("Instructor: " + Instructor + Environment.NewLine);
+            sb.Append("Building: " + Building + Environment.NewLine);
+            sb.Append("Room Number: " + RoomNumber + Environment.NewLine);
+            sb.Append("Credits: " + Credits + Environment.NewLine);
+            sb.Append("Registered: " + Registered + Environment.NewLine);
+
+            sb.Append(Environment.NewLine);
+
+            return sb.ToString();
         }
 
         public static void Main(string[] args) { }

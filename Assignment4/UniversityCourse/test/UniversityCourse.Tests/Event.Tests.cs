@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UniversityCourse.Tests
@@ -71,6 +72,17 @@ namespace UniversityCourse.Tests
             Assert.AreEqual("Intro to time-boxing, software estimation, and all things scrum.", ev.Description);
             Assert.AreEqual("SIRTI - Spokane, WA", ev.Location);
             Assert.AreEqual(175, ev.Capacity);
+            Console.WriteLine(value: "instances: " + Event.NumInstances);
+            Trace.WriteLine(ev.GetSummaryInformation());
+        }
+
+        [TestMethod]
+        public void Create_Event_Increments_Instances()
+        {
+            int before = Event.NumInstances;
+            Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
+            int after = Event.NumInstances;
+            Assert.AreEqual(1, after - before);
         }
     }
 }

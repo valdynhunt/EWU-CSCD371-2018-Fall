@@ -1,10 +1,15 @@
 using System;
+using System.Text;
 
 namespace UniversityCourse {
 
-    public class Event {
+    public class Event
+    {
+
+        public static int NumInstances { get; private set; } = 0;
         public Event(string name, string schedule, string description, string location, int capacity)
         {
+            NumInstances++;
             Name = name;
             Schedule = schedule;
             Description = description;
@@ -12,13 +17,27 @@ namespace UniversityCourse {
             Capacity = capacity;
         }
 
-        public void GetSummaryInformation()
+        //public int GetNumInstances()
+        //{
+        //    return NumInstances;
+        //}
+
+        public string GetSummaryInformation()
         {
-            Console.WriteLine();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("-----------Event Summary ----------");
+            sb.Append("Name: " + Name + Environment.NewLine);
+            sb.Append("Schedule: " + Schedule + Environment.NewLine);
+            sb.Append("Description: " + Description + Environment.NewLine);
+            sb.Append("Location: " + Location + Environment.NewLine);
+            sb.Append("Capacity: " + Capacity + Environment.NewLine);
+            sb.Append(Environment.NewLine);
+
+            return sb.ToString();
         }
 
         private string _Name;
-        public string Name 
+        public string Name
         {
             get
             {
@@ -26,16 +45,16 @@ namespace UniversityCourse {
             }
             set
             {
-                if (value == null) 
+                if (value == null)
                 {
                     throw new ArgumentNullException(nameof(Name), "Name cannot be null.");
                 }
 
-                if (value.Equals("")) 
+                if (value.Equals(""))
                 {
                     throw new ArgumentException(nameof(Name), "Name cannot be empty.");
                 }
-                
+
                 _Name = value;
             }
         }
@@ -87,6 +106,7 @@ namespace UniversityCourse {
         }
 
         private string _Location;
+
         public string Location
         {
             get

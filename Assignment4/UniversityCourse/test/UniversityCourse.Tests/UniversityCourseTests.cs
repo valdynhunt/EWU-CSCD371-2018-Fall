@@ -164,7 +164,16 @@ namespace UniversityCourse.Tests
             Assert.AreEqual(course.Credits, 5);
             Assert.AreEqual(course.Registered, 0);
 
+        }
 
+        [TestMethod]
+        public void Create_UniversityCourse_Increments_Instances()
+        {
+            int before = Event.NumInstances;
+            UniversityCourse course1 = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
+                "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
+            int after = Event.NumInstances;
+            Assert.AreEqual(1, after - before);
         }
     }
 }
