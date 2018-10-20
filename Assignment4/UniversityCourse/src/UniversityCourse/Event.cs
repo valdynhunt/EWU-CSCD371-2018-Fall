@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace UniversityCourse {
@@ -10,6 +11,7 @@ namespace UniversityCourse {
         public Event(string name, string schedule, string description, string location, int capacity)
         {
             NumInstances++;
+            EventList.Add(this);
             Name = name;
             Schedule = schedule;
             Description = description;
@@ -134,6 +136,7 @@ namespace UniversityCourse {
         }
 
         public int Capacity { get; private set; }
+        public static List<Event> EventList { get; } = new List<Event>();
 
     }
 }
