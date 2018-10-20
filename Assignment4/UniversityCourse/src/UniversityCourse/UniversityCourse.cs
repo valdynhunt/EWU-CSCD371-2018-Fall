@@ -274,11 +274,6 @@ namespace UniversityCourse
             registered = Registered;
         }
 
-        public static void Main(string[] args) {
-            UniversityCourse course1 = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
-    "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
-            Console.WriteLine(course1.GetSummaryInformation());
-            Console.WriteLine("instances: " + Event.NumInstances);
-        }
+        public static void Main(string[] args) {}
     }
 }
