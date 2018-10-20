@@ -100,6 +100,19 @@ Capacity: {ev.Capacity}
 ";
             Assert.AreEqual(expected, ev.GetSummaryInformation());
         }
+
+        [TestMethod]
+        public void Deconstruct_Gives_Component_Parts()
+        {
+            Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
+            ev.Deconstruct(out string name, out string schedule, out string description, out string location, out int capacity);
+
+            Assert.AreEqual(name, ev.Name);
+            Assert.AreEqual(schedule, ev.Schedule);
+            Assert.AreEqual(description, ev.Description);
+            Assert.AreEqual(location, ev.Location);
+            Assert.AreEqual(capacity, ev.Capacity);
+        }
     }
 }
 

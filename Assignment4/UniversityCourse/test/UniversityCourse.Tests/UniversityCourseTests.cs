@@ -146,6 +146,16 @@ namespace UniversityCourse.Tests
         }
 
         [TestMethod]
+        public void RemainingSeats_Return_Capacity_Minus_Registered()
+        {
+            UniversityCourse course = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
+                "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
+
+            int expected = course.Capacity - course.Registered;
+            Assert.AreEqual(expected, course.RemainingSeats);
+        }
+
+        [TestMethod]
         public void Create_UniversityCourse_Success() 
         {
             UniversityCourse course = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.", 
@@ -198,6 +208,32 @@ Registered: {course.Registered}
 
 ";
             Assert.AreEqual(expected, course.GetSummaryInformation());
+        }
+
+        [TestMethod]
+        public void Deconstruct_Gives_Component_Parts()
+        {
+            UniversityCourse course = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
+                            "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
+
+            course.Deconstruct(out string name, out string schedule, out string description, out string location, out int capacity,
+            out int crn, out string deptPrefix, out int courseNumber, out int sectionNumber,
+            out string instructor, out string building, out int roomNumber, out int credits, out int registered);
+
+            Assert.AreEqual(name, course.Name);
+            Assert.AreEqual(schedule, course.Schedule);
+            Assert.AreEqual(description, course.Description);
+            Assert.AreEqual(location, course.Location);
+            Assert.AreEqual(capacity, course.Capacity);
+            Assert.AreEqual(crn, course.Crn);
+            Assert.AreEqual(deptPrefix, course.DeptPrefix);
+            Assert.AreEqual(courseNumber, course.CourseNumber);
+            Assert.AreEqual(sectionNumber, course.SectionNumber);
+            Assert.AreEqual(instructor, course.Instructor);
+            Assert.AreEqual(building, course.Building);
+            Assert.AreEqual(roomNumber, course.RoomNumber);
+            Assert.AreEqual(credits, course.Credits);
+            Assert.AreEqual(registered, course.Registered);
         }
     }
 }

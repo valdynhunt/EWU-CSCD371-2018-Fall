@@ -55,6 +55,11 @@ namespace UniversityCourse
             }
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Name), "DeptPrefix cannot be null.");
+                }
+
                 if (value.Length != 4) 
                 {
                     throw new ArgumentException(nameof(Name), "DeptPrefix must be four letters.");
@@ -63,11 +68,6 @@ namespace UniversityCourse
                 if (value.Equals("")) 
                 {
                     throw new ArgumentException(nameof(Name), "DeptPrefix cannot be empty.");
-                }
-
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(Name), "DeptPrefix cannot be null.");
                 }
 
                 _DeptPrefix = value;
@@ -120,12 +120,9 @@ namespace UniversityCourse
             }
         }
 
-
-        private int _RemainingSeats;
         public int RemainingSeats
         {
-            get { return _RemainingSeats; }
-            set { _RemainingSeats = Capacity - Registered; }
+            get { return Capacity - Registered; }
         }
 
         private int _RoomNumber;
@@ -255,6 +252,26 @@ namespace UniversityCourse
             sb.Append(Environment.NewLine);
 
             return sb.ToString();
+        }
+
+        public virtual void Deconstruct(out string name, out string schedule, out string description, out string location, out int capacity, 
+            out int crn, out string deptPrefix, out int courseNumber, out int sectionNumber, 
+            out string instructor, out string building, out int roomNumber, out int credits, out int registered)
+        {
+            name = Name;
+            schedule = Schedule;
+            description = Description;
+            location = Location;
+            capacity = Capacity;
+            crn = Crn;
+            deptPrefix = DeptPrefix;
+            courseNumber = CourseNumber;
+            sectionNumber = SectionNumber;
+            instructor = Instructor;
+            building = Building;
+            roomNumber = RoomNumber;
+            credits = Credits;
+            registered = Registered;
         }
 
         public static void Main(string[] args) {

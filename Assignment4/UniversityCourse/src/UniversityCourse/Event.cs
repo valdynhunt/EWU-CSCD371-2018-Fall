@@ -17,10 +17,14 @@ namespace UniversityCourse {
             Capacity = capacity;
         }
 
-        //public int GetNumInstances()
-        //{
-        //    return NumInstances;
-        //}
+        public void Deconstruct(out string name, out string schedule, out string description, out string location, out int capacity)
+        {
+            name = Name;
+            schedule = Schedule;
+            description = Description;
+            location = Location;
+            capacity = Capacity;
+        }
 
         public string GetSummaryInformation()
         {
