@@ -145,8 +145,6 @@ namespace UniversityCourse.Tests
                 "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, -1);
         }
 
-
-
         [TestMethod]
         public void Create_UniversityCourse_Success() 
         {
