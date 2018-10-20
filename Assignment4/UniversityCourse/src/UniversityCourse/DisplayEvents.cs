@@ -6,30 +6,30 @@ namespace UniversityCourse
 
     public static class DisplayEvents
     {
-        public static void DisplayEventCollection(List<Event> EventList)
+        public static string DisplayEventCollection(List<Event> EventList)
         {
-
+            string evCollection = "";
             foreach (Object @object in EventList)
             {
-                Display(@object);
+                evCollection += Display(@object);
             }
 
+            return evCollection;
         }
 
-        public static void Display(Object @object)
+        public static string Display(Object @object)
         {
             switch (@object)
             {
                 case Event ev:
                     if (ev.GetType().GetMethod("GetSummaryInformation") != null)
                     {
-                        Console.WriteLine(ev.GetSummaryInformation());
+                        return ev.GetSummaryInformation();
                     }
                     else
                     {
-                        Console.WriteLine(ev.ToString());
+                        return ev.ToString(); // both Event classes have the method....so no dice.
                     }
-                    break;
                 case null:
                     throw new ArgumentNullException(nameof(@object));
                 default:
