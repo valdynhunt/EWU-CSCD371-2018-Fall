@@ -6,7 +6,7 @@ This assignment will use some of the code files you created in Assignment 4. For
 * Read through Chapter 8 by 10/23/2018
 * Read through Chapter 9 by 10/25/2018
 
-## Code Review
+## Code Review (due 10/25/2018)
 * Perform a Code Review on another person's Assignment 4 pull request.
 * Make sure you mark yourself as the reviewer on GitHub.
 * A code review MUST have comments
@@ -14,7 +14,7 @@ This assignment will use some of the code files you created in Assignment 4. For
     * Ask questions on anything you cannot explain
     * Suggest better alternatives
 
-## Coding Excercise
+## Coding Excercise (due 10/30/2018)
 * The project that contains the `UniversityCourse` and `Event` classes should be a console application. If this is not already the case, you may find it simpler to create new projects for this assignment and simply copy over the code (*.cs) files.
 * The console application should provide the following:
     * User should be able to create events
