@@ -2,7 +2,7 @@
 
 namespace EventApp
 {
-    class Program
+    class EventApp
     {
         static void Main(string[] args)
         {

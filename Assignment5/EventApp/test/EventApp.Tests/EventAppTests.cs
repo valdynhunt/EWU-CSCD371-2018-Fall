@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EventApp.Tests
@@ -8,6 +10,7 @@ namespace EventApp.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.IsFalse(false);
         }
     }
 }
