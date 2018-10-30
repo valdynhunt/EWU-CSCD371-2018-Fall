@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ConsoleTester
@@ -9,19 +10,28 @@ namespace ConsoleTester
         [TestMethod]
         public void TestMethod1()
         {
-            IConsole myConsole = new MockConsole();
-            ((MockConsole)myConsole).InputValue = "Hello World 2";
-            var myClass = new MyClass();
+            MockConsole myConsole = new MockConsole();
+            myConsole.InputValue.Add("Hello World");
+            myConsole.InputValue.Add("Hello World 2");
+            
+            var myClass = new Program();
+            myClass.MyConsole = myConsole;
 
-            Assert.AreEqual("Hello World 2", myClass.GetUserInput(myConsole));
+            var myTuple = myClass.SetTime();
+
+            Assert.AreEqual("Hello World", myTuple.firstValue);
+            Assert.AreEqual("Hello World 2", myTuple.secondValue);
         }
     }
 
-    class MyClass
+    class Program
     {
-        public string GetUserInput(IConsole console)
+        public IConsole MyConsole {get; set;}
+        public (string firstValue, string secondValue) SetTime()
         {
-            return console.ReadLine();
+            var firstValue = MyConsole.ReadLine();
+            var secondValue = MyConsole.ReadLine();
+            return (firstValue, secondValue);
         }
     }
 
@@ -46,11 +56,12 @@ namespace ConsoleTester
 
     class MockConsole : IConsole
     {
+        private int readLineCount = 0;
         public string ConsoleValue { get; set; }
-        public string InputValue {get; set;}
+        public List<string> InputValue = new List<string>();
         public string ReadLine()
         {
-            return InputValue;
+            return InputValue[readLineCount++];
         }
 
         public void WriteLine(string output)
