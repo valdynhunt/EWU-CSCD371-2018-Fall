@@ -2,16 +2,23 @@
 
 
 namespace EventApp
+
 {
 
-
-    class EventApp
+    public class MainEvent
     {
-        static void Main(string[] args)
+        private IConsole konsole;
+
+        public MainEvent(IConsole konsole)
+        {
+            this.konsole = konsole;
+        }
+
+        public static void Main(string[] args)
         {
             IConsole konsole = new ConcreteMyIConsole();
-            //var myClass = new MyClassToTest(console);
-            //myClass.DoStuff();
+            var ME = new MainEvent(konsole);
+           
 
             Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
             IEvent ievent = ev;
@@ -27,9 +34,9 @@ namespace EventApp
             int response = 0;
             do
             {
-                PrintGreeting(konsole);
+                ME.PrintGreeting(konsole);
 
-                response = GetResponse();
+                response = ME.GetResponse(konsole);
                 if (response == 1) EnterEvent(konsole);
                 else if (response == 2)
                 {
@@ -41,11 +48,6 @@ namespace EventApp
 
             konsole.WriteLine("That's all folks!");
 
-        }
-
-        private static void ListEvents()
-        {
-            throw new NotImplementedException();
         }
 
         private static void EnterEvent(IConsole konsole)
@@ -66,13 +68,13 @@ namespace EventApp
 
         }
 
-        private static int GetResponse()
+        private int GetResponse(IConsole konsole)
         {
-            string response = Console.ReadLine();
+            string response = konsole.ReadLine();
             return int.Parse(response);
         }
 
-        private static void PrintGreeting(IConsole konsole)
+        private void PrintGreeting(IConsole konsole)
         {
 
             konsole.WriteLine();
@@ -85,3 +87,11 @@ namespace EventApp
         }
     }
 }
+
+
+    //public (string firstValue, string secondValue) SetTime()
+    //{
+    //    var firstValue = MyConsole.ReadLine();
+    //    var secondValue = MyConsole.ReadLine();
+    //    return (firstValue, secondValue);
+    //}

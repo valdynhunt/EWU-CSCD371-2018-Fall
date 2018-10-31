@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{15E3D77A-24D8-4EB4-9CA1-344989AF8E0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventApp.Tests", "test\EventApp.Tests\EventApp.Tests.csproj", "{142B9395-5411-45E4-8C7B-9BCE76C347EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainEvent.Tests", "test\EventApp.Tests\MainEvent.Tests.csproj", "{142B9395-5411-45E4-8C7B-9BCE76C347EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A4DED344-3005-40AF-A262-4BBA5253180C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventApp", "src\EventApp\EventApp.csproj", "{046F10A0-B0C0-4ECE-910A-2498547CA689}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainEvent", "src\EventApp\MainEvent.csproj", "{046F10A0-B0C0-4ECE-910A-2498547CA689}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{142B9395-5411-45E4-8C7B-9BCE76C347EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +46,14 @@ Global
 		{046F10A0-B0C0-4ECE-910A-2498547CA689}.Release|x86.ActiveCfg = Release|Any CPU
 		{046F10A0-B0C0-4ECE-910A-2498547CA689}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{142B9395-5411-45E4-8C7B-9BCE76C347EE} = {15E3D77A-24D8-4EB4-9CA1-344989AF8E0E}
 		{046F10A0-B0C0-4ECE-910A-2498547CA689} = {A4DED344-3005-40AF-A262-4BBA5253180C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D9C1719-BC99-4B63-BFF5-4267048F7640}
 	EndGlobalSection
 EndGlobal

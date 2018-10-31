@@ -1,11 +1,12 @@
 using System;
 using System.Diagnostics;
+using EventApp;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EventApp.Tests
 {
     [TestClass]
-    public class EventAppTests
+    public class MainEventTests
     {
         [TestMethod]
         public void Explicit_Cast_of_UniversityCourse_Gives_Event()
@@ -99,23 +100,56 @@ namespace EventApp.Tests
 
         }
 
+//        [TestMethod]
+//        public void PrintGreeting_Sends_Greeting_To_Console()
+//        {
 
-        /*
-        [TestMethod]
-        public void TestMethod1()
-        {
-            MockConsole myConsole = new MockConsole();
-            myConsole.InputValue.Add("Hello World");
-            myConsole.InputValue.Add("Hello World 2");
+//           //MockConsole myConsole = new MockConsole();
+//            //myConsole.ConsoleValue.
+//            string expectedOutput = $@"
 
-            var myClass = new Program();
-            myClass.MyConsole = myConsole;
+//>>1. Enter a new event.
+//>>2. Print out a list of upcoming events.
+//>>3. Quit.
 
-            var myTuple = myClass.SetTime();
+//>>Please enter your choice: 
+//";
 
-            Assert.AreEqual("Hello World", myTuple.firstValue);
-            Assert.AreEqual("Hello World 2", myTuple.secondValue);
-        }
-        */
+//            //Assert.AreEqual(myConsole.ConsoleValue, "");
+//            IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, MainEvent.Main);
+
+//        }
     }
 }
+
+/*
+[TestMethod]
+public void TestMethod1()
+{
+    MockConsole myConsole = new MockConsole();
+    myConsole.InputValue.Add("Hello World");
+    myConsole.InputValue.Add("Hello World 2");
+
+    var myClass = new Program();
+    myClass.MyConsole = myConsole;
+
+    var myTuple = myClass.SetTime();
+
+    Assert.AreEqual("Hello World", myTuple.firstValue);
+    Assert.AreEqual("Hello World 2", myTuple.secondValue);
+}
+
+
+        private void PrintGreeting(IConsole konsole)
+{
+
+    konsole.WriteLine();
+    konsole.WriteLine("1. Enter a new event.");
+    konsole.WriteLine("2. Print out a list of upcoming events.");
+    konsole.WriteLine("3. Quit.");
+    konsole.WriteLine();
+    konsole.WriteLine("Please enter your choice: ");
+
+}
+*/
+

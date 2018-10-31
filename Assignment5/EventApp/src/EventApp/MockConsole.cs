@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EventApp
 {
-    class MockConsole : IConsole
+    public class MockConsole : IConsole
     {
         private int readLineCount = 0;
         public string ConsoleValue { get; set; }
