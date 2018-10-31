@@ -4,7 +4,16 @@ using System.Text;
 
 namespace EventApp {
 
-    public class Event
+        public static class MyExtensions
+    {
+        public static int MyEventMethod(this IEvent ev)
+        {
+             int piecesOfSwagNeeded = ev.Capacity * 3;
+            return piecesOfSwagNeeded;
+        }
+    }
+
+    public class Event : IEvent
     {
 
         public static int NumInstances { get; private set; } = 0;

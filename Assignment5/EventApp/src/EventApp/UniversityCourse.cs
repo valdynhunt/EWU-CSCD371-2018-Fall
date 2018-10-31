@@ -3,7 +3,7 @@ using System.Text;
 
 namespace EventApp
 {
-    public class UniversityCourse : Event
+    public class UniversityCourse : Event, IEvent
     {
        
 

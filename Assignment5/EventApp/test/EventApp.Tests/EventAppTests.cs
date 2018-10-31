@@ -98,5 +98,24 @@ namespace EventApp.Tests
             Assert.IsTrue(ob is UniversityCourse myCourse && myCourse.Credits == 5);
 
         }
+
+
+        /*
+        [TestMethod]
+        public void TestMethod1()
+        {
+            MockConsole myConsole = new MockConsole();
+            myConsole.InputValue.Add("Hello World");
+            myConsole.InputValue.Add("Hello World 2");
+
+            var myClass = new Program();
+            myClass.MyConsole = myConsole;
+
+            var myTuple = myClass.SetTime();
+
+            Assert.AreEqual("Hello World", myTuple.firstValue);
+            Assert.AreEqual("Hello World 2", myTuple.secondValue);
+        }
+        */
     }
 }
