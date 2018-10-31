@@ -18,5 +18,10 @@ namespace EventApp
         {
             ConsoleValue = output;
         }
+
+        public void WriteLine()
+        {
+            ConsoleValue = "";
+        }
     }
 }

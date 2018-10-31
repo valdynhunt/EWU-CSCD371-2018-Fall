@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace EventApp
 {
 
@@ -8,29 +9,60 @@ namespace EventApp
     {
         static void Main(string[] args)
         {
-            //IConsole console = new RealConsole();
+            IConsole konsole = new ConcreteMyIConsole();
             //var myClass = new MyClassToTest(console);
             //myClass.DoStuff();
 
             Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
             IEvent ievent = ev;
             int piecesOfSwag = ievent.MyEventMethod();
-            Console.WriteLine($"Event: {ev.Name}");
-            Console.WriteLine($"Event capacity: {ev.Capacity}");
-            Console.WriteLine($"Pieces of swag needed: {piecesOfSwag}");
-            Console.WriteLine(Environment.NewLine);
-            // Console.ReadLine();
+            konsole.WriteLine($"Event: {ev.Name}");
+            konsole.WriteLine($"Event capacity: {ev.Capacity}");
+            konsole.WriteLine($"Pieces of swag needed: {piecesOfSwag}");
+            konsole.WriteLine(Environment.NewLine);
 
-            PrintGreeting();
+            konsole.WriteLine();
+            konsole.WriteLine("Welcome to the EventTrakker!");
 
             int response = 0;
             do
             {
+                PrintGreeting(konsole);
+
                 response = GetResponse();
+                if (response == 1) EnterEvent(konsole);
+                else if (response == 2)
+                {
+                    string show = DisplayEvents.DisplayEventCollection(Event.EventList);
+                    konsole.WriteLine(show);
+                }
 
             } while (response != 3);
 
-            Console.WriteLine("That's all folks!");
+            konsole.WriteLine("That's all folks!");
+
+        }
+
+        private static void ListEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void EnterEvent(IConsole konsole)
+        {
+            konsole.WriteLine("To enter a new event, you will need to enter the event name, schedule, description, location, and capatiy.");
+            konsole.WriteLine("Please enter the name of your event: ");
+            string name = konsole.ReadLine();
+            konsole.WriteLine("Please enter the schedule of your event: ");
+            string schedule = konsole.ReadLine();
+            konsole.WriteLine("Please enter the description of your event: ");
+            string description = konsole.ReadLine();
+            konsole.WriteLine("Please enter the location of your event: ");
+            string location = konsole.ReadLine();
+            konsole.WriteLine("Please enter the capacity for your event: ");
+            string capacity = konsole.ReadLine();
+            Event ev = new Event(name, schedule, description, location, int.Parse(capacity));
+
 
         }
 
@@ -40,56 +72,16 @@ namespace EventApp
             return int.Parse(response);
         }
 
-        private static void PrintGreeting()
+        private static void PrintGreeting(IConsole konsole)
         {
-            Console.WriteLine();
-            Console.WriteLine("Welcome to the EventTrakker!");
-            Console.WriteLine();
-            Console.WriteLine("1. Enter a new event.");
-            Console.WriteLine("2. Print out a list of upcoming events.");
-            Console.WriteLine("3. Quit.");
-            Console.WriteLine();
-        }
 
-        /*
-         * 
-        public IConsole MyConsole {get; set;}
-        public (string firstValue, string secondValue) SetTime()
-        {
-            var firstValue = MyConsole.ReadLine();
-            var secondValue = MyConsole.ReadLine();
-            return (firstValue, secondValue);
+            konsole.WriteLine();
+            konsole.WriteLine("1. Enter a new event.");
+            konsole.WriteLine("2. Print out a list of upcoming events.");
+            konsole.WriteLine("3. Quit.");
+            konsole.WriteLine();
+            konsole.WriteLine("Please enter your choice: ");
+
         }
-        */ 
     }
 }
-
-
-
-
-//public interface IProvideImperialSize
-//{
-//    double GetArea();
-//}
-
-//public interface IProvideMetricSize
-//{
-//    double Bounce();
-//}
-
-//public class Box : IProvideMetricSize, IProvideImperialSize
-//{
-//    public int Width { get; set; }
-//    public int Height { get; set; }
-
-//    double IProvideMetricSize.Bounce()
-//    {
-//        throw new NotImplementedException();
-//    }
-
-//    public double GetArea()
-//    {
-//        throw new NotImplementedException();
-//    }
-//}
-

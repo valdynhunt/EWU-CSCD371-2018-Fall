@@ -15,5 +15,10 @@ namespace EventApp
         {
             Console.WriteLine(output);
         }
+
+        public void WriteLine()
+        {
+            Console.WriteLine();
+        }
     }
 }
