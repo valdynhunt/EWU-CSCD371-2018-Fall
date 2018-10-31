@@ -100,25 +100,27 @@ namespace EventApp.Tests
 
         }
 
-//        [TestMethod]
-//        public void PrintGreeting_Sends_Greeting_To_Console()
-//        {
+        //[TestMethod]
+        //public void PrintGreeting_Sends_Greeting_To_Console()
+        //{
 
-//           //MockConsole myConsole = new MockConsole();
-//            //myConsole.ConsoleValue.
-//            string expectedOutput = $@"
+        //    MockConsole myConsole = new MockConsole();
+        //    MainEvent myClass = new MainEvent(myConsole);
 
-//>>1. Enter a new event.
-//>>2. Print out a list of upcoming events.
-//>>3. Quit.
+           
+        //    myClass.Konsole = myConsole;
+        //    string expectedOutput = $@"
 
-//>>Please enter your choice: 
-//";
+        //>>1. Enter a new event.
+        //>>2. Print out a list of upcoming events.
+        //>>3. Quit.
 
-//            //Assert.AreEqual(myConsole.ConsoleValue, "");
-//            IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, MainEvent.Main);
+        //>>Please enter your choice: 
+        //";
 
-//        }
+        //    IntelliTect.TestTools.Console.ConsoleAssert.Expect(expectedOutput, MainEvent.Main);
+
+        //}
     }
 }
 

@@ -7,15 +7,17 @@ namespace EventApp
 
     public class MainEvent
     {
-        private IConsole konsole;
+        public IConsole Konsole { get; set; }
 
         public MainEvent(IConsole konsole)
         {
-            this.konsole = konsole;
+            this.Konsole = konsole;
         }
 
         public static void Main(string[] args)
         {
+
+
             IConsole konsole = new ConcreteMyIConsole();
             var ME = new MainEvent(konsole);
            
@@ -65,7 +67,6 @@ namespace EventApp
             string capacity = konsole.ReadLine();
             Event ev = new Event(name, schedule, description, location, int.Parse(capacity));
 
-
         }
 
         private int GetResponse(IConsole konsole)
@@ -89,9 +90,4 @@ namespace EventApp
 }
 
 
-    //public (string firstValue, string secondValue) SetTime()
-    //{
-    //    var firstValue = MyConsole.ReadLine();
-    //    var secondValue = MyConsole.ReadLine();
-    //    return (firstValue, secondValue);
-    //}
+
