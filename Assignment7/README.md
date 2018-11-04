@@ -18,7 +18,7 @@
 * Identify the caveats with whichever approach you choose by describing them above the `NotNullable` type declaration. (Both approaches have caveats which is why likely why Microsoft has never solved the non-nullable problem with a generic type.)
 * Include a description of why the caveats can't be resolved.
 * Note: It is optional (neither better or worse) to use `IFactory<T>` (don't use `Factory<T>`) as as a means of providing the "default" value of `T` if `NonNullable`'s default constructor (if it has one) is invoked. I mention this because in class I inferred you would need a factory class but that is not necessarily the case.
-* Prefix your PR Name with _"Assignment7"* (no space)
+* Prefix your PR Name with __"Assignment7"__ (no space)
 
 NOTE: This exercise __can be implemented in pairs__ - with two people submitting the same solution.  (Identify who you paired with in the PR name.)
 
