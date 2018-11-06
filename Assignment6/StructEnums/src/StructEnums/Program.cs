@@ -14,12 +14,12 @@ namespace StructEnums//StructEnums
     [Flags]
     public enum DayOfWeek
     {
-        Sunday = 1 << 0,	        // 0000001
-        Monday = 1 << 1,	        // 0000010
+        Sunday = 1 << 0,	    // 0000001
+        Monday = 1 << 1,	    // 0000010
         Tuesday = 1 << 2,	    // 0000100
         Wednesday = 1 << 3,	    // 0001000
         Thursday = 1 << 4,	    // 0010000
-        Friday = 1 << 5,	        // 0100000
+        Friday = 1 << 5,	    // 0100000
         Saturday = 1 << 6,	    // 1000000
 
         MW = Monday | Wednesday,
