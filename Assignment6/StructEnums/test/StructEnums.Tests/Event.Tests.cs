@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EventApp.Tests
+namespace StructEnums.Tests
 {
     [TestClass]
     public class EventTests
@@ -85,20 +85,20 @@ namespace EventApp.Tests
             Assert.AreEqual(1, after - before);
         }
 
-        [TestMethod]
-        public void GetSummaryInformation_Returns_Instance_Info()
-        {
-            Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
-            string expected = $@"
-Name: {ev.Name}
-Schedule: {ev.Schedule}
-Description: {ev.Description}
-Location: {ev.Location}
-Capacity: {ev.Capacity}
-";
+//        [TestMethod]
+//        public void GetSummaryInformation_Returns_Instance_Info()
+//        {
+//            Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
+//            string expected = $@"
+//Name: {ev.Name}
+//Schedule: {ev.Schedule}
+//Description: {ev.Description}
+//Location: {ev.Location}
+//Capacity: {ev.Capacity}
+//";
 
-            Assert.AreEqual(expected, ev.GetSummaryInformation());
-        }
+//            Assert.AreEqual(expected, ev.GetSummaryInformation());
+//        }
 
         [TestMethod]
         public void Deconstruct_Gives_Component_Parts()

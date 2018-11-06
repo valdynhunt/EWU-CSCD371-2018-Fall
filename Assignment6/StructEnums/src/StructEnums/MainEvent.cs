@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace EventApp
+namespace StructEnums
 
 {
 
@@ -14,43 +14,43 @@ namespace EventApp
             this.Konsole = konsole;
         }
 
-        public static void Main(string[] args)
-        {
+        //public static void Main(string[] args)
+        //{
 
 
-            IConsole konsole = new ConcreteMyIConsole();
-            var ME = new MainEvent(konsole);
+        //    IConsole konsole = new ConcreteMyIConsole();
+        //    var ME = new MainEvent(konsole);
            
 
-            Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
-            IEvent ievent = ev;
-            int piecesOfSwag = ievent.MyEventMethod();
-            konsole.WriteLine($"Event: {ev.Name}");
-            konsole.WriteLine($"Event capacity: {ev.Capacity}");
-            konsole.WriteLine($"Pieces of swag needed: {piecesOfSwag}");
-            konsole.WriteLine(Environment.NewLine);
+        //    Event ev = new Event("Scrum Training", "Saturday, November 7th, 2018", "Intro to time-boxing, software estimation, and all things scrum.", "SIRTI - Spokane, WA", 175);
+        //    IEvent ievent = ev;
+        //    int piecesOfSwag = ievent.MyEventMethod();
+        //    konsole.WriteLine($"Event: {ev.Name}");
+        //    konsole.WriteLine($"Event capacity: {ev.Capacity}");
+        //    konsole.WriteLine($"Pieces of swag needed: {piecesOfSwag}");
+        //    konsole.WriteLine(Environment.NewLine);
 
-            konsole.WriteLine();
-            konsole.WriteLine("Welcome to the EventTrakker!");
+        //    konsole.WriteLine();
+        //    konsole.WriteLine("Welcome to the EventTrakker!");
 
-            int response = 0;
-            do
-            {
-                ME.PrintGreeting(konsole);
+        //    int response = 0;
+        //    do
+        //    {
+        //        ME.PrintGreeting(konsole);
 
-                response = ME.GetResponse(konsole);
-                if (response == 1) EnterEvent(konsole);
-                else if (response == 2)
-                {
-                    string show = DisplayEvents.DisplayEventCollection(Event.EventList);
-                    konsole.WriteLine(show);
-                }
+        //        response = ME.GetResponse(konsole);
+        //        if (response == 1) EnterEvent(konsole);
+        //        else if (response == 2)
+        //        {
+        //            string show = DisplayEvents.DisplayEventCollection(Event.EventList);
+        //            konsole.WriteLine(show);
+        //        }
 
-            } while (response != 3);
+        //    } while (response != 3);
 
-            konsole.WriteLine("That's all folks!");
+        //    konsole.WriteLine("That's all folks!");
 
-        }
+        //}
 
         private static void EnterEvent(IConsole konsole)
         {

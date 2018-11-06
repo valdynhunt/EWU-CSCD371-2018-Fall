@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EventApp
+namespace StructEnums
 {
 
     public static class DisplayEvents

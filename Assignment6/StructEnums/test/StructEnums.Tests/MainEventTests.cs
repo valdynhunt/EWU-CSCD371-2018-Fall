@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
-using EventApp;
+using StructEnums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EventApp.Tests
+namespace StructEnums.Tests
 {
     [TestClass]
     public class MainEventTests

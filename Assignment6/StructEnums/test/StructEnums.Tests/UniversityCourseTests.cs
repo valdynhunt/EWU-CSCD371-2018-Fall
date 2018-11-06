@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EventApp.Tests
+namespace StructEnums.Tests
 {
     [TestClass]
     public class UniversityCourseTests
@@ -184,36 +184,36 @@ namespace EventApp.Tests
             Assert.AreEqual(1, after - before);
         }
 
-        [TestMethod]
-        public void GetSummaryInformation_Returns_Instance_Info()
-        {
-            UniversityCourse course = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
-                "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
-            string expected = $@"
------------University Course Summary ----------
-Name: {course.Name}
-Schedule: {course.Schedule}
-Description: {course.Description}
-Location: {course.Location}
-Capacity: {course.Capacity}
-CRN: {course.Crn}
-Dept. Prefix: {course.DeptPrefix}
-Course Number: {course.CourseNumber}
-Section Number: {course.SectionNumber}
-Instructor: {course.Instructor}
-Building: {course.Building}
-Room Number: {course.RoomNumber}
-Credits: {course.Credits}
-Registered: {course.Registered}
+//        [TestMethod]
+//        public void GetSummaryInformation_Returns_Instance_Info()
+//        {
+//            UniversityCourse course = new UniversityCourse("Programming 1", "MWF 9a - 10a", "An intro to programming using Python.",
+//                "Cheney, WA", 45, 13254, "CSCD", 211, 1, "Steiner", "Computing and Engineering Bldg.", 107, 5, 0);
+//            string expected = $@"
+//-----------University Course Summary ----------
+//Name: {course.Name}
+//Schedule: {course.Schedule}
+//Description: {course.Description}
+//Location: {course.Location}
+//Capacity: {course.Capacity}
+//CRN: {course.Crn}
+//Dept. Prefix: {course.DeptPrefix}
+//Course Number: {course.CourseNumber}
+//Section Number: {course.SectionNumber}
+//Instructor: {course.Instructor}
+//Building: {course.Building}
+//Room Number: {course.RoomNumber}
+//Credits: {course.Credits}
+//Registered: {course.Registered}
 
-";
+//";
 
             
             
 
 
-            Assert.AreEqual(expected, course.GetSummaryInformation());
-        }
+//            Assert.AreEqual(expected, course.GetSummaryInformation());
+//        }
 
         [TestMethod]
         public void Deconstruct_Gives_Component_Parts()

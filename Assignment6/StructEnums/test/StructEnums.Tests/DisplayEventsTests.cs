@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EventApp.Tests
+namespace StructEnums.Tests
 {
     [TestClass]
     public class DisplayEventsTests

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StructEnums
+namespace StructEnums//StructEnums
 {
     class Program
     {

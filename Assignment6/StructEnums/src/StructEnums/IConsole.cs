@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EventApp
+namespace StructEnums
 {
     public interface IConsole
     {
