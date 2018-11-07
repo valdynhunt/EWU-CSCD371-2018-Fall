@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace StructEnums//StructEnums
 {
@@ -6,10 +7,17 @@ namespace StructEnums//StructEnums
     {
         static void Main(string[] args)
         {
-            TimeValue tval = new TimeValue(7, 41, 36);
-            Console.WriteLine(typeof(TimeValue).GetProperty("Minute").CanWrite);
-            Console.WriteLine(tval.Hour);
-            Console.WriteLine(tval.Second);
+            DayOfWeek thisDay = DayOfWeek.Monday;
+            Quarter thisQuarter = Quarter.Fall;
+            TimeValue start = new TimeValue(7, 0, 0);
+            TimeSpan dur = new TimeSpan(60);
+
+            Schedule schedule = new Schedule(thisDay, thisQuarter, start, dur);
+
+            int structSize = Marshal.SizeOf(schedule);
+            Console.WriteLine(structSize);
+            //Console.WriteLine(Marshal.SizeOf(tval));
+
         }
     }
 
@@ -68,6 +76,27 @@ namespace StructEnums//StructEnums
         public Quarter Quarter { get; }
         public TimeValue StartTime { get; }
         public TimeSpan Duration { get; }
+    }
+
+    public struct MutableTimeValue : ITimeInterface
+    {
+        public MutableTimeValue(int hour, int minute, int second)
+        {
+            Hour = hour;
+            Minute = minute;
+            Second = second;
+        }
+
+        public int Hour { get; set; }
+        public int Minute { get; set; }
+        public int Second { get; set; }
+
+    }
+
+    public interface ITimeInterface
+    {
+        int Hour { get; set; }
+        int Minute { get; set; }
     }
 
 
