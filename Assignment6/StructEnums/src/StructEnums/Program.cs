@@ -6,7 +6,10 @@ namespace StructEnums//StructEnums
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            TimeValue tval = new TimeValue(7, 41, 36);
+            Console.WriteLine(typeof(TimeValue).GetProperty("Minute").CanWrite);
+            Console.WriteLine(tval.Hour);
+            Console.WriteLine(tval.Second);
         }
     }
 
@@ -14,6 +17,7 @@ namespace StructEnums//StructEnums
     [Flags]
     public enum DayOfWeek
     {
+        None = 0 << 0,          // 0000000
         Sunday = 1 << 0,	    // 0000001
         Monday = 1 << 1,	    // 0000010
         Tuesday = 1 << 2,	    // 0000100
@@ -27,7 +31,7 @@ namespace StructEnums//StructEnums
         MWF = Monday | Wednesday | Friday
     }
 
-    enum Quarter
+    public enum Quarter
     {
         Spring,
         Summer,
@@ -35,7 +39,7 @@ namespace StructEnums//StructEnums
         Winter
     }
 
-    readonly struct TimeValue
+    public readonly struct TimeValue
     {
         public TimeValue(int hour, int minute, int second)
         {
@@ -50,7 +54,7 @@ namespace StructEnums//StructEnums
     }
 
 
-    readonly struct Schedule
+    public readonly struct Schedule
     {
         public Schedule(DayOfWeek dayOfWeek, Quarter quarter, TimeValue startTime, TimeSpan duration)
         {
