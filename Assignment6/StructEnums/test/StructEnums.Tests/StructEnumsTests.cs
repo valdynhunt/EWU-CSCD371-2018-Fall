@@ -169,7 +169,7 @@ namespace StructEnums.Tests
             DayOfWeek thisDay = DayOfWeek.Monday;
             Quarter thisQuarter = Quarter.Fall;
             TimeValue start = new TimeValue(7, 0, 0);
-            TimeSpan dur = new TimeSpan(60);
+            TimeSpan dur = new TimeSpan(3, 4, 5);
 
             Schedule schedule = new Schedule(thisDay, thisQuarter, start, dur);
 
