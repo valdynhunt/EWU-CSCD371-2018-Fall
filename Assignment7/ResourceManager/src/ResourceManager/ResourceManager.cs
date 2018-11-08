@@ -6,7 +6,7 @@ namespace ResourceManager
     public class ResourceManager : IDisposable
     {
         public StreamReader FileChecker { get; }
-        public int Count { get; set; } = 0;
+        public static int Count { get; set; } = 0;
 
         public ResourceManager(string fileName)
         {
@@ -14,16 +14,14 @@ namespace ResourceManager
             Count++;
         }
 
-        public int GetInstanceCount()
-        {
-            return Count;
-        }
-
         public void Dispose()
         {
             // if the programmer remembers to call Dispose, this code will fire
+            // Suppress finalization, in case of explicit Dispose call
+            GC.SuppressFinalize(this);
             FileChecker?.Dispose();
             Count--;
+
         }
 
         ~ResourceManager()
@@ -37,6 +35,14 @@ namespace ResourceManager
 
         public static void Main(string[] args)
         {
+            Console.WriteLine($"1: {ResourceManager.Count}");
+            int instanceCount = ResourceManager.Count;
+            ResourceManager myThirdFileChecker = null;
+            myThirdFileChecker = new ResourceManager(@"C:\ProgramData\Temp\testFile1.txt");
+            Console.WriteLine("Generation: {0}", GC.GetGeneration(myThirdFileChecker));
+            Console.WriteLine($"2: {ResourceManager.Count}");
+            myThirdFileChecker.Dispose();
+            Console.WriteLine($"3: {ResourceManager.Count}");
 
         }
 
