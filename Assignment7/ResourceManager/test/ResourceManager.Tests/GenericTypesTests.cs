@@ -10,10 +10,16 @@ namespace ResourceManager.Tests
     {
 
         [TestMethod]
-        public void Instantiate_ResourceManager_Gives_NonNull()
+        public void Instantiate_ResourceManager_Gives_NonNull_Value()
         {
             NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>();
             Assert.IsNotNull(myNonNullable.Value);
+        }
+
+        [TestMethod]
+        public void Instantiate_ResourceManager_Sets_HasValue_To_True()
+        {
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>();
             Assert.IsTrue(myNonNullable.HasValue);
         }
 
@@ -27,7 +33,7 @@ namespace ResourceManager.Tests
         }
 
         [TestMethod]
-        public void Instantiation_Passing_In_Reference_To_NonNullable_Sets_Value_To_Ref()
+        public void Instantiation_Passing_In_T_To_NonNullable_Sets_Value_To_Ref()
         {
             ResourceManager rm = new ResourceManager(@"C:\ProgramData\Temp\testFile1.txt");
             NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>(rm);
@@ -52,5 +58,26 @@ namespace ResourceManager.Tests
             Assert.AreEqual(rm2.FileChecker, rm.FileChecker);
         }
 
+        [TestMethod]
+        public void GetValueOrDefault_From_NonNullable_Returns_T()
+        {
+            ResourceManager rm = new ResourceManager(@"C:\ProgramData\Temp\testFile1.txt");
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>(rm);
+
+            ResourceManager rm2 = myNonNullable.GetValueOrDefault();
+
+            Assert.AreEqual(rm, rm2);
+            Assert.AreEqual(rm.FileChecker, rm2.FileChecker);
+        }
+                [TestMethod]
+        public void GetValueOrDefault_Input_A_Default_Returns_Value_If_HasValue_True()
+        {
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>();
+
+            ResourceManager defaultValue = new ResourceManager(@"C:\ProgramData\Temp\testFile2.txt");
+            ResourceManager rm2 = myNonNullable.GetValueOrDefault(defaultValue);
+
+            Assert.AreNotEqual(defaultValue, rm2);
+        }
     }
 }

@@ -50,6 +50,10 @@ namespace ResourceManager
             
      Other references will return the nonnull value if it has been set, otherwise will 
      set value to the default instance of the underlying type.
+
+     The current constructors will always set a value, so it will never be null. This
+     behavior could be modified to incorporate GetValueOrDefault(T defaultValue), where 
+     the default of T would be passed in or so a new default can override an existing value.
    */
 
     public class NonNullable<T> where T : class, new()
@@ -98,5 +102,6 @@ namespace ResourceManager
             defaultValue = defaultValue ?? new T();
             return HasValue ? Value : defaultValue;
         }
+
     }
 }
