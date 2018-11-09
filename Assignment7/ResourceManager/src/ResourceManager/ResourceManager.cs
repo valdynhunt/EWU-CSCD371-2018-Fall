@@ -8,6 +8,12 @@ namespace ResourceManager
         public StreamReader FileChecker { get; }
         public static int Count { get; set; } = 0;
 
+        public ResourceManager()
+        {
+            FileChecker = new StreamReader(@"C:\ProgramData\Temp\testFile1.txt");
+            Count++;
+        }
+
         public ResourceManager(string fileName)
         {
             FileChecker = new StreamReader(fileName);

@@ -8,28 +8,49 @@ namespace ResourceManager.Tests
     [TestClass]
     public class GenericTypesTests
     {
-        [TestMethod]
-        public void String_Instance_Defaults_Value_To_Null()
-        {
-            NonNullable<string> myNonNullable = new NonNullable<string>();
-            Assert.IsNull(myNonNullable.Value);
-            Assert.IsFalse(myNonNullable.HasValue);
-        }
 
         [TestMethod]
-        public void String_Instance_Explicit_Constructor_Sets_Value_To_NonNull()
+        public void Instantiate_ResourceManager_Gives_NonNull()
         {
-            NonNullable<string> myNonNullable = new NonNullable<string>("developer");
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>();
             Assert.IsNotNull(myNonNullable.Value);
             Assert.IsTrue(myNonNullable.HasValue);
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void Instantiation_Passing_In_Null_To_NonNullable_Gives_NonNull()
         {
-            NonNullable<string> myNonNullable = new NonNullable<string>();
+            ResourceManager rm = null;
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>(rm);
             Assert.IsNotNull(myNonNullable.Value);
             Assert.IsTrue(myNonNullable.HasValue);
         }
+
+        [TestMethod]
+        public void Instantiation_Passing_In_Reference_To_NonNullable_Sets_Value_To_Ref()
+        {
+            ResourceManager rm = new ResourceManager(@"C:\ProgramData\Temp\testFile1.txt");
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>(rm);
+
+            Assert.IsNotNull(myNonNullable.Value);
+            Assert.IsTrue(myNonNullable.HasValue);
+            Assert.AreEqual(rm, myNonNullable.Value);
+        }
+
+        [TestMethod]
+        public void Getting_Value_From_NonNullable_Returns_T()
+        {
+            ResourceManager rm = new ResourceManager(@"C:\ProgramData\Temp\testFile1.txt");
+            NonNullable<ResourceManager> myNonNullable = new NonNullable<ResourceManager>(rm);
+
+            Assert.IsNotNull(myNonNullable.Value);
+            Assert.IsTrue(myNonNullable.HasValue);
+
+            ResourceManager rm2 = myNonNullable.Value;
+
+            Assert.AreEqual(rm, rm2);
+            Assert.AreEqual(rm2.FileChecker, rm.FileChecker);
+        }
+
     }
 }
