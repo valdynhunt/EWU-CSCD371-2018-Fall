@@ -30,4 +30,6 @@ No.  If you have tests with pattern matching against `Event` and `UniversityCour
 
 This is relatively unusual and possibly unexpected to the caller.  Use caution when changing the value.  When setting a value programmers expect the value the passed to be assigned. If you change it (invoke Trim() on a string for example) it might be unexpected behavior.  That doesn't mean don't, but you would certainly want to document this at a minimum.  If you don't want to allow pre/post fix spaces, consider throwing an exception instead.
 
+### 8. Should I group all fields together and then all properties together or should they be intermingled so that each field appears with its' property.
 
+I would stronly encourage the latter.  It isn't wrong to do it the other way but if you separate them then any changed to the property (such as the type or the name) would not be immediately obvious unless they were together.  Also, since fields should generally only be accessed from within their properties, the association (as though the field were part of the property definition) makes sense.
