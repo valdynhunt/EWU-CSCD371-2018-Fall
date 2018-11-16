@@ -24,6 +24,9 @@ namespace DelegatesAndStuff
             {
                 item?.Invoke();
             }
+
+            CallbackAction.ForEach(
+                (item) => item?.Invoke());
         }
 
         public void Register(Callback callback)
