@@ -4,7 +4,7 @@
 
 * Finish reading through Chapter 17 by 11/29/2018
 
-## Coding Exercise (due 11/15/2018)
+## Coding Exercise (due 12/3/2018)
 
 The purpose of this homework is to practice using LINQ to extract, transform and aggregate information out of a collection of items and to understand deferred execution and how to avoid it.
 
