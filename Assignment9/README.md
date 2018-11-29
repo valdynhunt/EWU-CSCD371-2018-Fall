@@ -4,7 +4,7 @@
 
 * Finish reading through Chapter 17 by 11/29/2018
 
-## Coding Exercise (due 11/15/2018)
+## Coding Exercise (due 12/3/2018)
 
 The purpose of this homework is to practice using LINQ to extract, transform and aggregate information out of a collection of items and to understand deferred execution and how to avoid it.
 
@@ -15,7 +15,7 @@ Write a static `PatentDataAnalyzer` **class library** that has methods for the f
 
 * `InventorNames`: Return a list of the inventor names from the specified country where the country is specified as a parameter.
 * `InventorLastNames`: Returns the only the last name of each of the inventor sorted in reverse order by inventor Id.
-* `LocationsWithInventors`: Returns a single comma separated list of all the **unique** "<State>-<Country>" strings for each inventor.  The result should be a scalar value of type `string`, not a collection (other than the fact that a string is a collection of characters).
+* `LocationsWithInventors`: Returns a single comma separated list of all the **unique** "<State>-<Country>" (where you list the unique state and country combinations with a dash between the state and the country) strings for each inventor.  The result should be a scalar value of type `string`, not a collection (other than the fact that a string is a collection of characters).  E.g. NC-USA, PA-USA, NY, etc....
 * `Randomize`: Write an `IEnumerable<T>` extension method on a class called `Enumerable<T>` that returns an `IEnumerable<T>` of the original items in random order.  To test execute the method using LINQ and verify the order is not the same for at least 3 invocations.
 
 ### Extra Credit
