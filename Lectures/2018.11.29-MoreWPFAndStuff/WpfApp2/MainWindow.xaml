@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         xmlns:io="clr-namespace:System.IO;assembly=mscorlib"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Topmost="True"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
@@ -18,7 +19,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.LayoutTransform>
-            <ScaleTransform ScaleX="1.2" ScaleY="1.2"></ScaleTransform>
+            <ScaleTransform ScaleX="1.4" ScaleY="1.4"></ScaleTransform>
         </Grid.LayoutTransform>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -40,15 +41,48 @@
 
                 <HierarchicalDataTemplate DataType="{x:Type io:DirectoryInfo}"
                                           ItemsSource="{Binding Converter={StaticResource ChildrenConverter}}">
-                    <TextBlock Text="{Binding Name}" Foreground="Turquoise" />
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Background="Transparent">
+                            <md:PackIcon.Style>
+                                <Style TargetType="md:PackIcon">
+
+                                    <Setter Property="Kind" Value="Folder" />
+
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <!--<Setter Property="Foreground" Value="Red" />-->
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard Name="AnimateRed">
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="Foreground.Color" 
+                                                                        To="Red"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <RemoveStoryboard BeginStoryboardName="AnimateRed" />
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding Path=IsExpanded, RelativeSource={RelativeSource AncestorType=TreeViewItem}}" Value="True">
+                                            <Setter Property="Kind" Value="Face" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </md:PackIcon.Style>
+                        </md:PackIcon>
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
 
-        <TextBox Text="{Binding RootDirectory, UpdateSourceTrigger=PropertyChanged}" x:Name="TextBox" Grid.Column="0" Grid.Row="1" />
+        <Border BorderBrush="White" Grid.Column="0" Grid.Row="1">
+            <TextBox 
+                Text="{Binding RootDirectory, UpdateSourceTrigger=PropertyChanged}" x:Name="TextBox"  />
+        </Border>
 
         <Button Content="Load" Command="{Binding LoadCommand}" 
                 CommandParameter="{Binding RootDirectory}"
-                Grid.Column="1" Grid.Row="1" Height="100"/>
+                Grid.Column="1" Grid.Row="1" />
     </Grid>
 </Window>
