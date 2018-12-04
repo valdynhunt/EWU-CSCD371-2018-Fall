@@ -1,3 +1,4 @@
+// pulled from https://github.com/IntelliTect/EssentialCSharp/blob/v7.0/src/Chapter15/Listing15.10.FilteringWithSystem.Linq.Enumerable.Where.cs
 namespace PatentDataAnalyzer
 {
     using System;

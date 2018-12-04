@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B843BCBB-72C8-4095-9FBE-E4BAD4FEAF93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatentDataAnalyzer.Tests", "test\PatentDataAnalyzer.Tests\PatentDataAnalyzer.Tests.csproj", "{43241E4D-ADD5-4CAA-BFC6-96F1D729507E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatentDataAnalyzer.Tests", "test\PatentDataAnalyzer.Tests\PatentDataAnalyzer.Tests.csproj", "{43241E4D-ADD5-4CAA-BFC6-96F1D729507E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{462E26F2-1D60-4B7E-AD2B-6FE068765E63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatentDataAnalyzer", "src\PatentDataAnalyzer\PatentDataAnalyzer.csproj", "{1F3BBD51-E357-476F-8733-D8E59F057AF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatentDataAnalyzer", "src\PatentDataAnalyzer\PatentDataAnalyzer.csproj", "{1F3BBD51-E357-476F-8733-D8E59F057AF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{43241E4D-ADD5-4CAA-BFC6-96F1D729507E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -49,8 +46,14 @@ Global
 		{1F3BBD51-E357-476F-8733-D8E59F057AF4}.Release|x86.ActiveCfg = Release|Any CPU
 		{1F3BBD51-E357-476F-8733-D8E59F057AF4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{43241E4D-ADD5-4CAA-BFC6-96F1D729507E} = {B843BCBB-72C8-4095-9FBE-E4BAD4FEAF93}
 		{1F3BBD51-E357-476F-8733-D8E59F057AF4} = {462E26F2-1D60-4B7E-AD2B-6FE068765E63}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3949B996-C99F-4A5F-88F7-79621B3594D0}
 	EndGlobalSection
 EndGlobal
